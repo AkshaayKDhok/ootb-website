@@ -1,9 +1,322 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>OOTB V2</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OOTB V2</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+
+body{
+background:#f5f7fb;
+color:#1a1a1a;
+}
+
+/* NAVBAR */
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 80px;
+background:#fff;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 4px 20px rgba(0,0,0,0.05);
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#333;
+font-weight:500;
+}
+
+/* HERO */
+.hero{
+height:70vh;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+color:#fff;
+background:linear-gradient(270deg,#0052ff,#00d4ff,#0052ff);
+background-size:400% 400%;
+animation:gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove{
+0%{background-position:0%}
+50%{background-position:100%}
+100%{background-position:0%}
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+.hero p{
+max-width:600px;
+opacity:0.9;
+margin-bottom:25px;
+}
+
+.btn{
+padding:12px 22px;
+border-radius:8px;
+border:none;
+cursor:pointer;
+margin:5px;
+font-weight:600;
+}
+
+.btn-primary{
+background:#fff;
+color:#0052ff;
+}
+
+.btn-outline{
+background:transparent;
+border:1px solid #fff;
+color:#fff;
+}
+
+/* SECTION */
+.section{
+padding:80px 0;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:0 40px;
+}
+
+.section h2{
+margin-bottom:30px;
+}
+
+/* CARDS */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.card{
+background:#fff;
+padding:25px;
+border-radius:14px;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* ICON */
+.icon{
+font-size:22px;
+margin-bottom:12px;
+display:block;
+}
+
+/* EMPLOYEE */
+.avatar{
+width:42px;
+height:42px;
+border-radius:50%;
+background:#0052ff;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:10px;
+font-size:14px;
+}
+
+/* TESTIMONIAL */
+.testimonial{
+background:#fff;
+padding:20px;
+border-radius:12px;
+font-style:italic;
+}
+
+/* CONTACT */
+.contact{
+background:#0f172a;
+color:#fff;
+padding:40px;
+border-radius:18px;
+}
+
+.contact div{
+margin:12px 0;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+/* FOOTER */
+footer{
+padding:60px 40px;
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:40px;
+max-width:1200px;
+margin:auto;
+}
+
+footer h4{
+margin-bottom:10px;
+}
+
+.social span{
+margin-right:12px;
+font-size:20px;
+cursor:pointer;
+}
+
+.bottom{
+text-align:center;
+padding:20px;
+color:#777;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+nav{padding:15px}
+footer{grid-template-columns:1fr}
+.container{padding:0 20px}
+}
+</style>
+
 </head>
 <body>
-  <h1>OOTB V2 Coming Soon</h1>
+
+<nav>
+<div><b>OOTB</b></div>
+<div>
+<a href="#">Home</a>
+<a href="#culture">Culture</a>
+<a href="#spotlight">Spotlight</a>
+<a href="#events">Events</a>
+</div>
+</nav>
+
+<section class="hero">
+<h1>Out Of The Blue</h1>
+<p>AI-Powered Venture Studio building scalable brands using automation & systems.</p>
+<div>
+<button class="btn btn-primary">Explore Culture</button>
+<button class="btn btn-outline">Join OOTB</button>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<h2>Trending Now</h2>
+<div class="grid">
+<div class="card"><span class="icon">⚡</span><b>AI Growth Systems</b><p>Automation-led marketing engines scaling brands.</p></div>
+<div class="card"><span class="icon">⚙️</span><b>Internal Ops Upgrade</b><p>System-driven workflows replacing manual execution.</p></div>
+<div class="card"><span class="icon">🎬</span><b>Content Engine</b><p>High-speed pipelines for media.</p></div>
+</div>
+</div>
+</section>
+
+<section id="spotlight" class="section">
+<div class="container">
+<h2>Employee Spotlight</h2>
+<div class="grid">
+<div class="card"><div class="avatar">AG</div><b>Aniruddh Gupta</b><p>Founder</p></div>
+<div class="card"><div class="avatar">VS</div><b>Vibha Surana</b><p>Director</p></div>
+<div class="card"><div class="avatar">AD</div><b>Akshaay Dhok</b><p>Head Ops</p></div>
+<div class="card"><div class="avatar">LM</div><b>Leena Makwana</b><p>Accountant</p></div>
+<div class="card"><div class="avatar">SP</div><b>Surabhi Pandit</b><p>Sound Engineer</p></div>
+<div class="card"><div class="avatar">SH</div><b>Shaun</b><p>Physio</p></div>
+<div class="card"><div class="avatar">AN</div><b>Ankeeta</b><p>Interior</p></div>
+</div>
+</div>
+</section>
+
+<section id="culture" class="section">
+<div class="container">
+<h2>Our Culture</h2>
+<div class="grid">
+<div class="card"><span class="icon">🚀</span><b>Execution First</b><p>Speed over perfection.</p></div>
+<div class="card"><span class="icon">🧠</span><b>Systems Thinking</b><p>We build scalable systems.</p></div>
+<div class="card"><span class="icon">👑</span><b>Ownership</b><p>Everyone acts like a founder.</p></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<h2>What Our Team Says</h2>
+<div class="grid">
+<div class="testimonial">“Grow faster than anywhere else.” – Akshaay</div>
+<div class="testimonial">“Execution unmatched.” – Surabhi</div>
+<div class="testimonial">“You evolve here.” – Vibha</div>
+</div>
+</div>
+</section>
+
+<section id="events" class="section">
+<div class="container">
+<h2>Upcoming Events</h2>
+<div class="grid">
+<div class="card"><span class="icon">🍽️</span><b>Team Lunch</b><p>Monthly bonding</p></div>
+<div class="card"><span class="icon">🏆</span><b>Employee of the Month</b><p>Recognition</p></div>
+<div class="card"><span class="icon">📊</span><b>Strategy Meet</b><p>Quarterly planning</p></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="contact">
+<h2>Contact Us</h2>
+<div>📧 akshaay.d@ootb.work</div>
+<div>📞 +91-9767647583</div>
+<div>📍 Baner, Pune</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div>
+<h4>Out Of The Blue</h4>
+<p>Building internet-first brands using AI, automation, and systems.</p>
+</div>
+
+<div>
+<h4>Quick Links</h4>
+<p>Home</p>
+<p>Culture</p>
+<p>Spotlight</p>
+<p>Events</p>
+</div>
+
+<div>
+<h4>Social</h4>
+<div class="social">
+<span>🌐</span>
+<span>📘</span>
+<span>📸</span>
+<span>▶️</span>
+<span>✖️</span>
+</div>
+</div>
+</footer>
+
+<div class="bottom">© 2026 Out Of The Blue</div>
+
 </body>
 </html>
