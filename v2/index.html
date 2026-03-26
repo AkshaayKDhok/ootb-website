@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OOTB V2.5</title>
+<title>OOTB V3</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
-/* ================= BASE ================= */
+/* ================= ROOT ================= */
 :root{
 --primary:#0052FF;
 --secondary:#00D1FF;
 --bg:#F4F6FB;
 --text:#0F172A;
 --muted:#6B7280;
---card:#FFFFFF;
+--glass:rgba(255,255,255,0.6);
 }
 
 *{
@@ -31,9 +31,9 @@ background:var(--bg);
 color:var(--text);
 }
 
-/* ================= LAYOUT ================= */
+/* ================= CONTAINER ================= */
 .container{
-max-width:1150px;
+max-width:1180px;
 margin:auto;
 padding:30px 20px;
 }
@@ -45,6 +45,9 @@ justify-content:space-between;
 align-items:center;
 padding:18px 30px;
 background:white;
+position:sticky;
+top:0;
+z-index:100;
 }
 
 .nav a{
@@ -57,42 +60,59 @@ font-weight:500;
 .nav .active{
 color:var(--primary);
 border-bottom:2px solid var(--primary);
-padding-bottom:4px;
 }
 
 /* ================= HERO ================= */
 .hero{
-margin-top:20px;
-border-radius:28px;
 display:grid;
 grid-template-columns:1.1fr 1fr;
+border-radius:30px;
 overflow:hidden;
+margin-top:20px;
 background:linear-gradient(135deg,#0040ff,#0052ff);
 color:white;
+position:relative;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+top:0;
+right:0;
+width:50%;
+height:100%;
+background:radial-gradient(circle at center, rgba(255,255,255,0.2), transparent);
+animation:move 6s infinite linear;
+}
+
+@keyframes move{
+0%{transform:translateX(0)}
+100%{transform:translateX(-40px)}
 }
 
 .hero-left{
 padding:60px;
+z-index:2;
 }
 
 .badge{
-background:#00D1FF;
-color:#000;
+background:linear-gradient(90deg,#00D1FF,#00bfff);
 padding:6px 14px;
 border-radius:20px;
 font-size:12px;
 font-weight:600;
 display:inline-block;
 margin-bottom:20px;
+color:black;
 }
 
 .hero h1{
 font-size:48px;
-line-height:1.1;
 font-weight:800;
+line-height:1.1;
 }
 
-.hero h1 span{
+.hero span{
 color:#7ed7ff;
 }
 
@@ -101,7 +121,7 @@ margin-top:20px;
 color:#dbeafe;
 }
 
-.hero-buttons{
+.btns{
 margin-top:30px;
 display:flex;
 gap:12px;
@@ -115,29 +135,25 @@ cursor:pointer;
 transition:0.3s;
 }
 
-.btn-primary{
+.primary{
 background:white;
 color:var(--primary);
 }
 
-.btn-outline{
+.outline{
 border:1px solid rgba(255,255,255,0.5);
-color:white;
 }
 
-.hero-right{
-background:url("https://images.unsplash.com/photo-1635070041078-e363dbe005cb") center/cover;
-opacity:0.25;
+/* ================= SECTION ================= */
+.section{
+margin-top:50px;
 }
 
-/* ================= TITLES ================= */
-.section-title{
+.section h2{
 font-size:26px;
-font-weight:700;
-margin-top:40px;
 }
 
-.section-sub{
+.sub{
 color:var(--muted);
 margin-bottom:20px;
 }
@@ -149,13 +165,19 @@ grid-template-columns:2fr 1fr;
 gap:25px;
 }
 
-.big-card{
-position:relative;
+.card{
 border-radius:20px;
 overflow:hidden;
+position:relative;
+transition:0.3s;
 }
 
-.big-card img{
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 40px rgba(0,0,0,0.1);
+}
+
+.card img{
 width:100%;
 height:100%;
 object-fit:cover;
@@ -170,41 +192,24 @@ background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);
 width:100%;
 }
 
-.tag{
-background:white;
-color:black;
-font-size:11px;
-padding:4px 10px;
-border-radius:12px;
-display:inline-block;
-margin-bottom:8px;
-}
-
-.small-card{
-background:white;
+.side-card{
+background:var(--glass);
+backdrop-filter:blur(12px);
 padding:20px;
 border-radius:16px;
 margin-bottom:15px;
 transition:0.3s;
 }
 
-.small-card:hover{
+.side-card:hover{
 transform:translateY(-4px);
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
-
-.small-card span{
-font-size:11px;
-color:var(--primary);
-font-weight:600;
 }
 
 /* ================= EVENTS ================= */
-.grid-2{
+.grid{
 display:grid;
 grid-template-columns:1.5fr 1fr;
 gap:30px;
-margin-top:50px;
 }
 
 .event{
@@ -213,9 +218,8 @@ padding:18px;
 border-radius:16px;
 display:flex;
 justify-content:space-between;
-align-items:center;
 margin-bottom:15px;
-border-left:4px solid var(--primary);
+border-left:5px solid var(--primary);
 transition:0.3s;
 }
 
@@ -223,14 +227,10 @@ transition:0.3s;
 transform:translateY(-3px);
 }
 
-.date{
-font-weight:800;
-color:var(--primary);
-}
-
 /* ================= CULTURE ================= */
 .culture{
-background:white;
+background:var(--glass);
+backdrop-filter:blur(14px);
 padding:20px;
 border-radius:20px;
 }
@@ -240,23 +240,10 @@ width:48%;
 border-radius:12px;
 }
 
-.culture-images{
+.row{
 display:flex;
 gap:10px;
 margin-bottom:15px;
-}
-
-.avatars{
-display:flex;
-margin-top:10px;
-}
-
-.avatar{
-width:30px;
-height:30px;
-border-radius:50%;
-margin-right:-8px;
-border:2px solid white;
 }
 
 /* ================= QUICK ================= */
@@ -264,25 +251,26 @@ border:2px solid white;
 display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:20px;
-margin-top:50px;
+margin-top:40px;
 }
 
-.q-card{
+.q{
 background:white;
-padding:30px;
+padding:25px;
 border-radius:20px;
-text-align:center;
 transition:0.3s;
+text-align:center;
 }
 
-.q-card:hover{
+.q:hover{
 transform:translateY(-6px);
+box-shadow:0 15px 30px rgba(0,0,0,0.08);
 }
 
 /* ================= FOOTER ================= */
 .footer{
 margin-top:60px;
-padding:40px 20px;
+padding:30px;
 display:flex;
 justify-content:space-between;
 flex-wrap:wrap;
@@ -291,25 +279,10 @@ flex-wrap:wrap;
 /* ================= RESPONSIVE ================= */
 @media(max-width:900px){
 
-.hero{
-grid-template-columns:1fr;
-}
-
-.hero-right{
-display:none;
-}
-
-.trending{
-grid-template-columns:1fr;
-}
-
-.grid-2{
-grid-template-columns:1fr;
-}
-
-.quick{
-grid-template-columns:1fr 1fr;
-}
+.hero{grid-template-columns:1fr;}
+.trending{grid-template-columns:1fr;}
+.grid{grid-template-columns:1fr;}
+.quick{grid-template-columns:1fr 1fr;}
 
 }
 
@@ -318,7 +291,6 @@ grid-template-columns:1fr 1fr;
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
 <b>OOTB</b>
 <div>
@@ -335,127 +307,77 @@ grid-template-columns:1fr 1fr;
 <div class="hero">
 <div class="hero-left">
 <div class="badge">INTERNAL PORTAL</div>
-
 <h1>Hello, Team!<br><span>Ready to create?</span></h1>
+<p>Welcome back to the OOTB canvas. Explore updates and connect.</p>
 
-<p>Welcome back to the OOTB canvas. Explore updates and connect with your peers.</p>
-
-<div class="hero-buttons">
-<div class="btn btn-primary">Submit Weekly Spark →</div>
-<div class="btn btn-outline">View Handbook</div>
+<div class="btns">
+<div class="btn primary">Submit Weekly Spark →</div>
+<div class="btn outline">View Handbook</div>
 </div>
 </div>
-
-<div class="hero-right"></div>
 </div>
 
 <!-- TRENDING -->
-<h2 class="section-title">Trending Now</h2>
-<p class="section-sub">The pulse of Out of the Blue today.</p>
+<div class="section">
+<h2>Trending Now</h2>
+<p class="sub">The pulse of Out of the Blue today.</p>
 
 <div class="trending">
 
-<div class="big-card">
+<div class="card">
 <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72">
 <div class="overlay">
-<div class="tag">Internal Spotlight</div>
-<h3>Innovation Lab: Q3 Breakthroughs in AI Integration</h3>
-<p style="font-size:13px;">Marcus Thorne • 5 min read</p>
+<b>Innovation Lab</b>
+<p>Marcus Thorne • 5 min read</p>
 </div>
 </div>
 
 <div>
-
-<div class="small-card">
-<span>ANNOUNCEMENTS</span>
-<h4>New Hybrid Work Policy Update</h4>
-<p>Exploring flexibility while maintaining creativity.</p>
-</div>
-
-<div class="small-card">
-<span>AWARDS</span>
-<h4>OOTB Wins 'Best Agency' 2024</h4>
-<p>Latest industry recognition.</p>
-</div>
-
-<div class="small-card">
-<span>INTERNAL STORY</span>
-<h4>Mural Project</h4>
-<p>Creative workspace transformation.</p>
+<div class="side-card"><b>New Hybrid Work Policy</b><p>Flexible model</p></div>
+<div class="side-card"><b>OOTB Wins Award</b></div>
+<div class="side-card"><b>Mural Project</b></div>
 </div>
 
 </div>
-
 </div>
 
 <!-- EVENTS -->
-<div class="grid-2">
+<div class="section grid">
 
 <div>
-<h2 class="section-title">Upcoming Events</h2>
+<h2>Upcoming Events</h2>
 
-<div class="event">
-<div><span class="date">12 OCT</span><br>Creative Coffee Hour</div>
-<div>+</div>
-</div>
-
-<div class="event">
-<div><span class="date">15 OCT</span><br>Town Hall</div>
-<div>+</div>
-</div>
-
-<div class="event">
-<div><span class="date">22 OCT</span><br>Halloween Contest</div>
-<div>+</div>
-</div>
+<div class="event"><span>12 OCT</span> Creative Coffee Hour <span>+</span></div>
+<div class="event"><span>15 OCT</span> Town Hall <span>+</span></div>
+<div class="event"><span>22 OCT</span> Halloween Contest <span>+</span></div>
 
 </div>
 
 <div class="culture">
-
-<div class="culture-images">
+<div class="row">
 <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978">
 </div>
-
-<h4>#OutInTheWild</h4>
-<p>Our culture goes beyond desks — it's about experiences.</p>
-
-<div class="avatars">
-<img class="avatar" src="https://i.pravatar.cc/30?img=1">
-<img class="avatar" src="https://i.pravatar.cc/30?img=2">
-<img class="avatar" src="https://i.pravatar.cc/30?img=3">
-</div>
-
-<div class="btn btn-primary" style="margin-top:15px;">Explore Our Values</div>
-
+<b>#OutInTheWild</b>
+<p>Culture beyond desks.</p>
 </div>
 
 </div>
 
 <!-- QUICK -->
 <div class="quick">
-
-<div class="q-card"><b>Handbook</b><p>Rules of the canvas.</p></div>
-<div class="q-card"><b>Benefits</b><p>Health & Wellness info.</p></div>
-<div class="q-card"><b>Payroll</b><p>View your earnings.</p></div>
-<div class="q-card"><b>Directory</b><p>Connect with team.</p></div>
-
+<div class="q">Handbook</div>
+<div class="q">Benefits</div>
+<div class="q">Payroll</div>
+<div class="q">Directory</div>
 </div>
 
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-<div>
-<b>OOTB</b><br>
-© 2026 Out Of The Blue
-</div>
-
-<div>
-Contact • Privacy • Terms • Internal Handbook
-</div>
-
+<div><b>OOTB</b><br>© 2026</div>
+<div>Contact • Privacy • Terms • Internal Handbook</div>
 </div>
 
 </body>
