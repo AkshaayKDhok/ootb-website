@@ -3,97 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OOTB</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Out Of The Blue (OOTB)</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/4c3b1f73a2.js" crossorigin="anonymous"></script>
 
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',sans-serif;background:#0f172a;color:white;}
+body{
+font-family:'Inter',sans-serif;
+background:#f7f9fc;
+color:#111827;
+}
 
 /* NAV */
 nav{
 position:fixed;width:100%;top:0;
-background:rgba(15,23,42,0.8);
-backdrop-filter:blur(10px);
+background:white;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
 display:flex;justify-content:space-between;
-padding:16px 40px;z-index:100;
+padding:16px 40px;
+z-index:1000;
+transition:0.3s;
 }
-nav h2{color:#3b82f6;}
+nav h2{color:#0052ff;}
 nav ul{display:flex;gap:25px;list-style:none;}
-nav a{color:white;text-decoration:none;}
+nav a{text-decoration:none;color:#333;font-weight:500;}
 
 /* HERO */
 .hero{
-height:100vh;
-display:flex;flex-direction:column;
-justify-content:center;align-items:center;
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-background:linear-gradient(135deg,#1e3a8a,#2563eb);
+background:linear-gradient(135deg,#0052ff,#3b82f6);
+color:white;
+padding:20px;
 }
-.hero h1{font-size:52px;}
-.hero p{max-width:600px;margin-top:10px;}
+.hero h1{font-size:48px;margin-bottom:10px;}
+.hero p{max-width:600px;opacity:0.9;}
 
 /* SECTION */
-.section{padding:100px 20px;}
-.container{max-width:1100px;margin:auto;}
-.section h2{margin-bottom:40px;}
+.section{
+padding:90px 20px;
+}
+.container{
+max-width:1100px;
+margin:auto;
+}
+.section h2{
+margin-bottom:40px;
+font-size:28px;
+}
 
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
 }
 
 /* CARD */
 .card{
-background:rgba(255,255,255,0.08);
-padding:25px;border-radius:12px;
-border:1px solid rgba(255,255,255,0.1);
+background:white;
+padding:24px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+.card:hover{
+transform:translateY(-6px);
+}
+
+/* ICON */
+.icon{
+font-size:20px;
+color:#0052ff;
+margin-bottom:12px;
 }
 
 /* EMPLOYEE */
-.employee{text-align:center;}
+.employee{
+text-align:center;
+}
+.social-icons{
+margin-top:10px;
+}
 .social-icons i{
 margin:0 6px;
 cursor:pointer;
-color:#ccc;
+color:#666;
 }
-.social-icons i:hover{color:#3b82f6;}
+.social-icons i:hover{color:#0052ff;}
+
+/* TESTIMONIAL */
+.testimonial{
+background:#eef4ff;
+padding:20px;
+border-radius:10px;
+}
 
 /* CONTACT */
 .contact{
-background:#020617;
+background:#0f172a;
+color:white;
 padding:40px;
 border-radius:12px;
-line-height:2;
-margin-top:40px;
+line-height:2.2;
 }
 
 /* FOOTER */
 footer{
-margin-top:50px;
+margin-top:60px;
 padding:40px;
 text-align:center;
-color:#aaa;
 }
-.footer-about{margin-bottom:15px;}
+.footer-about{
+margin-bottom:15px;
+}
 .footer-icons i{
 margin:0 10px;
+font-size:18px;
 cursor:pointer;
 }
 
-/* SMALL */
-.small{font-size:14px;color:#ccc;}
+/* REVEAL */
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:0.6s;
+}
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
 
 </style>
-<script src="https://kit.fontawesome.com/4c3b1f73a2.js"></script>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
 <h2>OOTB</h2>
 <ul>
@@ -104,7 +157,6 @@ cursor:pointer;
 </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 <h1>Out Of The Blue</h1>
 <p>AI-Powered Venture Studio building scalable brands using automation & systems.</p>
@@ -116,46 +168,50 @@ cursor:pointer;
 <h2>Trending Now</h2>
 
 <div class="grid">
-<div class="card">
+
+<div class="card reveal">
+<div class="icon"><i class="fas fa-bolt"></i></div>
 <h3>AI Growth Systems</h3>
-<p class="small">Automation-led marketing engines scaling brands.</p>
+<p>Automation-led marketing engines scaling brands.</p>
 </div>
 
-<div class="card">
+<div class="card reveal">
+<div class="icon"><i class="fas fa-cogs"></i></div>
 <h3>Internal Ops Upgrade</h3>
-<p class="small">System-driven workflows replacing manual execution.</p>
+<p>System-driven workflows replacing manual execution.</p>
 </div>
 
-<div class="card">
+<div class="card reveal">
+<div class="icon"><i class="fas fa-video"></i></div>
 <h3>Content Engine</h3>
-<p class="small">High-speed production pipelines for media.</p>
-</div>
+<p>High-speed production pipelines for media.</p>
 </div>
 
+</div>
 </div>
 </section>
 
 <!-- SPOTLIGHT -->
-<section class="section" id="spotlight" style="background:#111827;">
+<section class="section" id="spotlight" style="background:#eef4ff;">
 <div class="container">
 <h2>Employee Spotlight</h2>
 
 <div class="grid">
 
 <!-- FULL TEAM -->
-<div class="card employee"><h3>Aniruddh Gupta</h3><p>Founder & Director</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card employee reveal"><h3>Aniruddh Gupta</h3><p>Founder & Director</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
 
-<div class="card employee"><h3>Vibha Surana</h3><p>Director & CA</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card employee reveal"><h3>Vibha Surana</h3><p>Director & CA</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
 
-<div class="card employee"><h3>Akshaay Dhok</h3><p>Head - Ops & Marketing</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card employee reveal"><h3>Akshaay Dhok</h3><p>Head - Ops & Marketing</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
 
-<div class="card employee"><h3>Leena Makwana</h3><p>Accountant</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card employee reveal"><h3>Leena Makwana</h3><p>Accountant</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
 
-<div class="card employee"><h3>Surabhi Pandit</h3><p>Sound Engineer</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card employee reveal"><h3>Surabhi Pandit</h3><p>Sound Engineer</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
 
-<div class="card employee"><h3>Shaun</h3><p>Physiotherapist</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card employee reveal"><h3>Shaun</h3><p>Physiotherapist</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
 
-<div class="card employee"><h3>Ankeeta</h3><p>Interior Designer</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card employee reveal"><h3>Ankeeta</h3><p>Interior Designer</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
 
 </div>
 
@@ -168,9 +224,13 @@ cursor:pointer;
 <h2>Our Culture</h2>
 
 <div class="grid">
-<div class="card"><h3>Execution First</h3><p class="small">Speed & output over perfection.</p></div>
-<div class="card"><h3>Systems Thinking</h3><p class="small">We build scalable processes.</p></div>
-<div class="card"><h3>Ownership</h3><p class="small">Everyone operates like a founder.</p></div>
+
+<div class="card reveal"><div class="icon"><i class="fas fa-rocket"></i></div><h3>Execution First</h3><p>Speed & output over perfection.</p></div>
+
+<div class="card reveal"><div class="icon"><i class="fas fa-brain"></i></div><h3>Systems Thinking</h3><p>We build scalable processes.</p></div>
+
+<div class="card reveal"><div class="icon"><i class="fas fa-crown"></i></div><h3>Ownership</h3><p>Everyone operates like a founder.</p></div>
+
 </div>
 
 <p style="margin-top:30px;">“OOTB is not a workplace. It’s a system where you evolve fast.”</p>
@@ -178,15 +238,41 @@ cursor:pointer;
 </div>
 </section>
 
+<!-- TESTIMONIAL -->
+<section class="section">
+<div class="container">
+<h2>What Our Team Says</h2>
+
+<div class="grid">
+
+<div class="testimonial reveal">
+<p>“OOTB pushes you to grow faster than anywhere else.”</p>
+<strong>- Akshaay</strong>
+</div>
+
+<div class="testimonial reveal">
+<p>“Execution culture here is unmatched.”</p>
+<strong>- Surabhi</strong>
+</div>
+
+<div class="testimonial reveal">
+<p>“You don’t work here, you evolve here.”</p>
+<strong>- Vibha</strong>
+</div>
+
+</div>
+</div>
+</section>
+
 <!-- EVENTS -->
-<section class="section" id="events" style="background:#111827;">
+<section class="section" id="events" style="background:#eef4ff;">
 <div class="container">
 <h2>Upcoming Events</h2>
 
 <div class="grid">
-<div class="card"><h3>Team Lunch</h3><p class="small">Monthly bonding</p></div>
-<div class="card"><h3>Employee of the Month</h3><p class="small">Recognition system</p></div>
-<div class="card"><h3>Strategy Meet</h3><p class="small">Quarterly planning</p></div>
+<div class="card reveal"><div class="icon"><i class="fas fa-utensils"></i></div><h3>Team Lunch</h3><p>Monthly bonding</p></div>
+<div class="card reveal"><div class="icon"><i class="fas fa-award"></i></div><h3>Employee of the Month</h3><p>Recognition system</p></div>
+<div class="card reveal"><div class="icon"><i class="fas fa-chart-line"></i></div><h3>Strategy Meet</h3><p>Quarterly planning</p></div>
 </div>
 
 </div>
@@ -196,13 +282,10 @@ cursor:pointer;
 <section class="section">
 <div class="container">
 <div class="contact">
-
 <h2>Contact Us</h2>
-
 <p><i class="fas fa-envelope"></i> akshaay.d@ootb.work</p>
 <p><i class="fas fa-phone"></i> +91-9767647583</p>
 <p><i class="fas fa-map-marker-alt"></i> Office 301 & 401, SV Greenhills, Baner Road, Pune - 411045</p>
-
 </div>
 </div>
 </section>
@@ -223,9 +306,20 @@ Building internet-first brands using AI, automation, and systems.
 <i class="fab fa-x-twitter"></i>
 </div>
 
-<p style="margin-top:15px;">© 2026 Out Of The Blue</p>
+<p style="margin-top:10px;">© 2026 Out Of The Blue</p>
 
 </footer>
+
+<script>
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+reveals.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-50){
+el.classList.add("active");
+}
+});
+});
+</script>
 
 </body>
 </html>
