@@ -3,128 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OOTB</title>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<title>Out Of The Blue (OOTB)</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/4c3b1f73a2.js" crossorigin="anonymous"></script>
 
 <style>
 
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background:#f7f9fc;
-  color:#0f172a;
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Inter',sans-serif;
+  background:#f5f7fb;
+  color:#111827;
+  scroll-behavior:smooth;
 }
 
-/* NAV */
-header {
+/* NAVBAR */
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  background:rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
   display:flex;
   justify-content:space-between;
-  padding:20px 40px;
-  background:white;
-  position:sticky;
-  top:0;
+  align-items:center;
+  padding:16px 40px;
+  z-index:1000;
+  border-bottom:1px solid rgba(0,0,0,0.05);
 }
 
-nav a {
-  margin-left:20px;
+nav h2{
+  color:#0052ff;
+}
+
+nav ul{
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+nav ul li a{
   text-decoration:none;
-  color:#333;
+  color:#111;
+  font-weight:500;
+  position:relative;
 }
 
-nav a:hover { color:#0052ff; }
+nav ul li a::after{
+  content:'';
+  position:absolute;
+  bottom:-4px;
+  left:0;
+  width:0%;
+  height:2px;
+  background:#0052ff;
+  transition:0.3s;
+}
+
+nav ul li a:hover::after{
+  width:100%;
+}
 
 /* HERO */
-.hero {
-  background: linear-gradient(135deg,#0052ff,#1e3a8a);
-  color:white;
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
+  background: radial-gradient(circle at top, #2563eb, #1e3a8a);
+  color:white;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:48px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  opacity:0.9;
+  max-width:600px;
+}
+
+/* SECTIONS */
+.section{
   padding:100px 20px;
 }
 
-.hero h1 { font-size:48px; }
-.hero p { margin-top:10px; }
-
-/* SECTION */
-.section {
-  padding:70px 20px;
-}
-
-.container {
+.container{
   max-width:1100px;
   margin:auto;
 }
 
-.section.alt {
-  background:#eef2ff;
+.section h2{
+  margin-bottom:50px;
+  font-size:28px;
 }
 
 /* GRID */
-.grid {
+.grid{
   display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:20px;
 }
 
-.grid-3 {
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+/* GLASS CARD */
+.card{
+  padding:22px;
+  border-radius:16px;
+  backdrop-filter: blur(12px);
+  background:rgba(255,255,255,0.6);
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+  transition:all 0.3s ease;
+  position:relative;
+  overflow:hidden;
 }
 
-/* CARD */
-.card {
-  background:white;
-  padding:20px;
-  border-radius:14px;
-  transition:0.25s;
-  border:1px solid #e5e7eb;
+/* GRADIENT BORDER EFFECT */
+.card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  padding:1px;
+  border-radius:16px;
+  background:linear-gradient(120deg,#0052ff,#00d1ff);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
 
-.card:hover {
-  transform:translateY(-6px);
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+/* HOVER */
+.card:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 20px 50px rgba(0,0,0,0.08);
 }
 
-/* EMPLOYEE */
-.employee {
-  text-align:center;
-}
-
-.icons {
-  margin-top:10px;
-}
-
-.icons i {
-  margin:0 5px;
-  color:#64748b;
-  cursor:pointer;
-}
-
-.icons i:hover {
+/* ICON */
+.card i{
+  margin-right:8px;
   color:#0052ff;
 }
 
-/* CULTURE QUOTE */
-.quote {
+/* SPOTLIGHT */
+.employee{
+  text-align:center;
+}
+
+.icons{
+  margin-top:10px;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+}
+
+.icons i{
+  cursor:pointer;
+  color:#666;
+  transition:0.2s;
+}
+
+.icons i:hover{
+  color:#0052ff;
+}
+
+/* QUOTE */
+.quote{
   margin-top:30px;
-  background:white;
   padding:20px;
+  background:#eef2ff;
   border-left:4px solid #0052ff;
   border-radius:10px;
 }
 
-/* EVENTS */
-.event {
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-
-.event i {
-  color:#0052ff;
-}
-
 /* CONTACT */
-.contact {
+.contact{
   background:#0f172a;
   color:white;
   padding:40px;
@@ -132,19 +193,33 @@ nav a:hover { color:#0052ff; }
 }
 
 /* FOOTER */
-footer {
+footer{
   text-align:center;
-  padding:30px;
-  background:white;
+  padding:20px;
+  margin-top:40px;
+  color:#666;
+}
+
+/* ANIMATION */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 0.8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* MOBILE */
 @media(max-width:768px){
-  .hero h1 { font-size:32px; }
-}
-
-html {
-  scroll-behavior:smooth;
+  .hero h1{
+    font-size:32px;
+  }
+  nav{
+    padding:12px 20px;
+  }
 }
 
 </style>
@@ -152,193 +227,185 @@ html {
 
 <body>
 
-<header>
-  <h2 style="color:#0052ff;">OOTB</h2>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#culture">Culture</a>
-    <a href="#spotlight">Spotlight</a>
-    <a href="#events">Events</a>
-  </nav>
-</header>
+<!-- NAVBAR -->
+<nav>
+  <h2>OOTB</h2>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#culture">Culture</a></li>
+    <li><a href="#spotlight">Spotlight</a></li>
+    <li><a href="#events">Events</a></li>
+  </ul>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
   <h1>Out Of The Blue</h1>
-  <p><strong>AI-Powered Venture Studio</strong></p>
-  <p>We build scalable brands using AI, automation & systems.</p>
+  <p>AI-Powered Venture Studio building scalable brands using automation & systems.</p>
 </section>
 
 <!-- TRENDING -->
 <section class="section">
-  <div class="container">
-    <h2>Trending Now</h2>
-    <div class="grid grid-3">
+<div class="container">
+<h2>Trending Now</h2>
+<div class="grid">
 
-      <div class="card">
-        <h3>AI Growth Systems</h3>
-        <p>Automation-led marketing engines scaling digital brands.</p>
-      </div>
+<div class="card reveal">
+<h3><i class="fas fa-bolt"></i> AI Growth Systems</h3>
+<p>Automation-led marketing engines scaling digital brands.</p>
+</div>
 
-      <div class="card">
-        <h3>Internal Ops Upgrade</h3>
-        <p>System-driven workflows replacing manual execution.</p>
-      </div>
+<div class="card reveal">
+<h3><i class="fas fa-cogs"></i> Internal Ops Upgrade</h3>
+<p>System-driven workflows replacing manual execution.</p>
+</div>
 
-      <div class="card">
-        <h3>Content Engine</h3>
-        <p>High-speed production pipelines for video & media.</p>
-      </div>
+<div class="card reveal">
+<h3><i class="fas fa-video"></i> Content Engine</h3>
+<p>High-speed production pipelines for video & media.</p>
+</div>
 
-    </div>
-  </div>
+</div>
+</div>
 </section>
 
-<!-- EMPLOYEES -->
-<section id="spotlight" class="section alt">
-  <div class="container">
-    <h2>Employee Spotlight</h2>
+<!-- SPOTLIGHT -->
+<section class="section" id="spotlight" style="background:#eef2ff;">
+<div class="container">
+<h2>Employee Spotlight</h2>
+<div class="grid">
 
-    <div class="grid grid-3">
+<div class="card employee reveal">
+<h3>Aniruddh Gupta</h3>
+<p>Founder & Director</p>
+<div class="icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div>
+</div>
 
-      <div class="card employee">
-        <h4>Aniruddh Gupta</h4>
-        <p>Founder & Director</p>
-        <div class="icons">
-          <i class="fab fa-linkedin"></i>
-          <i class="fab fa-facebook"></i>
-        </div>
-      </div>
+<div class="card employee reveal">
+<h3>Vibha Surana</h3>
+<p>Director & CA</p>
+<div class="icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div>
+</div>
 
-      <div class="card employee">
-        <h4>Vibha Surana</h4>
-        <p>Director & CA</p>
-        <div class="icons">
-          <i class="fab fa-linkedin"></i>
-          <i class="fab fa-facebook"></i>
-        </div>
-      </div>
+<div class="card employee reveal">
+<h3>Akshaay Dhok</h3>
+<p>Head - Ops & Marketing</p>
+<div class="icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div>
+</div>
 
-      <div class="card employee">
-        <h4>Akshaay Dhok</h4>
-        <p>Head - Ops & Marketing</p>
-        <div class="icons">
-          <i class="fab fa-linkedin"></i>
-          <i class="fab fa-facebook"></i>
-        </div>
-      </div>
+<div class="card employee reveal">
+<h3>Leena Makwana</h3>
+<p>Accountant</p>
+<div class="icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div>
+</div>
 
-      <div class="card employee">
-        <h4>Leena Makwana</h4>
-        <p>Accountant</p>
-        <div class="icons">
-          <i class="fab fa-linkedin"></i>
-          <i class="fab fa-facebook"></i>
-        </div>
-      </div>
+<div class="card employee reveal">
+<h3>Surabhi Pandit</h3>
+<p>Sound Engineer</p>
+<div class="icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div>
+</div>
 
-      <div class="card employee">
-        <h4>Surabhi Pandit</h4>
-        <p>Sound Engineer</p>
-        <div class="icons">
-          <i class="fab fa-linkedin"></i>
-          <i class="fab fa-facebook"></i>
-        </div>
-      </div>
+<div class="card employee reveal">
+<h3>Shaun</h3>
+<p>Physiotherapist</p>
+<div class="icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div>
+</div>
 
-      <div class="card employee">
-        <h4>Shaun</h4>
-        <p>Physiotherapist</p>
-        <div class="icons">
-          <i class="fab fa-linkedin"></i>
-          <i class="fab fa-facebook"></i>
-        </div>
-      </div>
+<div class="card employee reveal">
+<h3>Ankeeta</h3>
+<p>Interior Designer</p>
+<div class="icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div>
+</div>
 
-    </div>
-  </div>
+</div>
+</div>
 </section>
 
 <!-- CULTURE -->
-<section id="culture" class="section">
-  <div class="container">
-    <h2>Our Culture</h2>
+<section class="section" id="culture">
+<div class="container">
+<h2>Our Culture</h2>
 
-    <div class="grid grid-3">
+<div class="grid">
 
-      <div class="card">
-        <h3>Execution First</h3>
-        <p>Speed matters. Output matters more.</p>
-      </div>
+<div class="card reveal">
+<h3><i class="fas fa-rocket"></i> Execution First</h3>
+<p>Speed matters. Output matters more.</p>
+</div>
 
-      <div class="card">
-        <h3>Systems Thinking</h3>
-        <p>We build processes that scale without dependency.</p>
-      </div>
+<div class="card reveal">
+<h3><i class="fas fa-brain"></i> Systems Thinking</h3>
+<p>We build processes that scale without dependency.</p>
+</div>
 
-      <div class="card">
-        <h3>Ownership</h3>
-        <p>Everyone operates like a founder.</p>
-      </div>
+<div class="card reveal">
+<h3><i class="fas fa-crown"></i> Ownership</h3>
+<p>Everyone operates like a founder.</p>
+</div>
 
-    </div>
+</div>
 
-    <div class="quote">
-      “OOTB is not a workplace. It’s a system where you evolve fast.”
-    </div>
+<div class="quote">
+“OOTB is not a workplace. It’s a system where you evolve fast.”
+</div>
 
-  </div>
+</div>
 </section>
 
 <!-- EVENTS -->
-<section id="events" class="section alt">
-  <div class="container">
-    <h2>Upcoming Events</h2>
+<section class="section" id="events" style="background:#eef2ff;">
+<div class="container">
+<h2>Upcoming Events</h2>
 
-    <div class="grid grid-3">
+<div class="grid">
 
-      <div class="card event">
-        <i class="fas fa-utensils"></i>
-        <div>
-          <h4>Team Lunch</h4>
-          <p>Monthly bonding</p>
-        </div>
-      </div>
+<div class="card reveal">
+<h3><i class="fas fa-utensils"></i> Team Lunch</h3>
+<p>Monthly bonding session</p>
+</div>
 
-      <div class="card event">
-        <i class="fas fa-award"></i>
-        <div>
-          <h4>Employee of the Month</h4>
-          <p>Recognition system</p>
-        </div>
-      </div>
+<div class="card reveal">
+<h3><i class="fas fa-award"></i> Employee of the Month</h3>
+<p>Recognition system</p>
+</div>
 
-      <div class="card event">
-        <i class="fas fa-chart-line"></i>
-        <div>
-          <h4>Strategy Meet</h4>
-          <p>Quarterly planning</p>
-        </div>
-      </div>
+<div class="card reveal">
+<h3><i class="fas fa-chart-line"></i> Strategy Meet</h3>
+<p>Quarterly planning</p>
+</div>
 
-    </div>
-  </div>
+</div>
+
+</div>
 </section>
 
 <!-- CONTACT -->
 <section class="section">
-  <div class="container">
-    <div class="contact">
-      <h2>Contact Us</h2>
-      <p>Email: akshaay.d@ootb.work</p>
-      <p>Phone / WhatsApp: +91-9767647583</p>
-    </div>
-  </div>
+<div class="container">
+<div class="contact">
+<h2>Contact Us</h2>
+<p>Email: akshaay.d@ootb.work</p>
+<p>Phone / WhatsApp: +91-9767647583</p>
+</div>
+</div>
 </section>
 
 <footer>
-  © 2026 Out Of The Blue
+© 2026 Out Of The Blue
 </footer>
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", () => {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 50) {
+      el.classList.add("active");
+    }
+  });
+});
+</script>
 
 </body>
 </html>
