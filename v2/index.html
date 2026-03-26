@@ -3,160 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OOTB V2</title>
+<title>OOTB Internal Portal</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+--blue:#2b52e8;
+--cyan:#00d4c8;
+--bg:#f4f5f7;
+--text:#111827;
+--muted:#6b7280;
+--card:#ffffff;
+--radius:14px;
+--shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
 body{
-font-family:'Inter',sans-serif;
-background:#F6F7FB;
-color:#0F172A;
+font-family:'Manrope',sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
 }
 
-/* CONTAINER */
-.container{
-max-width:1220px;
-margin:auto;
-padding:24px;
+/* ─── FAST INTRO (FIXED) ─── */
+#intro{
+position:fixed;inset:0;
+background:#0b1026;
+display:flex;align-items:center;justify-content:center;
+z-index:9999;
+animation:fadeOut .6s ease forwards .4s;
 }
 
-/* NAV */
+#intro h1{
+font-size:64px;
+font-weight:800;
+background:linear-gradient(135deg,#fff,#7ba4ff,#00d4c8);
+-webkit-background-clip:text;
+color:transparent;
+animation:scaleIn .4s ease;
+}
+
+@keyframes scaleIn{
+from{opacity:0;transform:scale(.9)}
+to{opacity:1;transform:scale(1)}
+}
+
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden}
+}
+
+/* ─── NAV ─── */
+nav{
+background:#fff;
+border-bottom:1px solid #e5e7eb;
+position:sticky;top:0;
+z-index:10;
+}
+
 .nav{
+max-width:960px;margin:auto;
+display:flex;align-items:center;
+padding:12px 20px;
+}
+
+.nav a{
+text-decoration:none;
+color:#374151;
+font-size:13px;
+margin-right:14px;
+font-weight:600;
+}
+
+.nav a.active{
+color:var(--blue);
+}
+
+/* ─── HERO ─── */
+.hero{
+max-width:960px;margin:20px auto;
+padding:0 20px;
+}
+
+.hero-box{
+background:linear-gradient(120deg,#1a3fd4,#4169f0);
+border-radius:20px;
+padding:40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:24px;
-}
-
-.logo{font-weight:800;font-size:18px;}
-
-.nav-links a{
-margin-right:22px;
-color:#6B7280;
-text-decoration:none;
-font-weight:500;
-}
-
-.nav-links a.active{
-color:#0052FF;
-border-bottom:2px solid #0052FF;
-padding-bottom:6px;
-}
-
-/* HERO */
-.hero{
-display:grid;
-grid-template-columns:1fr 1fr;
-border-radius:28px;
+color:#fff;
 overflow:hidden;
-margin-bottom:50px;
+position:relative;
 }
 
-.hero-left{
-padding:56px;
-background:linear-gradient(135deg,#0B3EDB,#0052FF);
-color:white;
+.hero-box::after{
+content:'';
+position:absolute;
+right:-80px;top:-80px;
+width:300px;height:300px;
+background:radial-gradient(circle,rgba(255,255,255,.2),transparent);
 }
 
-.tag{
-background:#00D1FF;
-padding:6px 14px;
-border-radius:20px;
-font-size:12px;
-display:inline-block;
-margin-bottom:18px;
-color:#002A3A;
+.hero h1{font-size:32px;font-weight:800}
+.hero h2{font-size:28px;color:#9adfff;margin-bottom:10px}
+.hero p{font-size:13px;opacity:.8;margin-bottom:18px}
+
+.btn{
+padding:10px 18px;
+border-radius:8px;
+font-size:13px;
 font-weight:600;
+text-decoration:none;
+display:inline-block;
 }
-
-.hero h1{
-font-size:46px;
-line-height:1.15;
-margin-bottom:16px;
-}
-
-.hero h1 span{
-color:#7ED3FF;
-}
-
-.hero p{
-opacity:0.9;
-margin-bottom:26px;
-}
-
-.btns{display:flex;gap:14px;}
 
 .btn-primary{
-background:white;
-color:#0052FF;
-padding:13px 22px;
-border-radius:14px;
-font-weight:600;
-border:none;
-cursor:pointer;
-transition:0.25s;
+background:#fff;color:var(--blue);
+margin-right:10px;
 }
 
-.btn-primary:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 20px rgba(0,0,0,0.15);
+.btn-outline{
+border:1px solid rgba(255,255,255,.5);
+color:#fff;
 }
 
-.btn-secondary{
-border:1px solid rgba(255,255,255,0.5);
-color:white;
-padding:13px 22px;
-border-radius:14px;
-background:transparent;
-cursor:pointer;
+/* ─── MAIN ─── */
+.container{
+max-width:960px;
+margin:auto;
+padding:0 20px;
 }
 
-/* HERO RIGHT */
-.hero-right{
-background:
-radial-gradient(circle at 70% 30%, rgba(255,255,255,0.15), transparent 40%),
-radial-gradient(circle at 40% 70%, rgba(255,255,255,0.1), transparent 50%),
-linear-gradient(135deg,#0B3EDB,#1D6BFF);
-animation:gradientMove 8s infinite alternate ease-in-out;
-}
-
-@keyframes gradientMove{
-0%{background-position:0% 50%}
-100%{background-position:100% 50%}
-}
-
-/* TITLES */
+/* ─── TRENDING ─── */
 .section-title{
-font-size:26px;
-font-weight:700;
-margin-bottom:4px;
+font-size:18px;
+font-weight:800;
+margin-top:30px;
 }
 
-.section-sub{
-color:#6B7280;
-font-size:14px;
-margin-bottom:24px;
-}
+.sub{font-size:13px;color:var(--muted);margin-bottom:16px}
 
-/* TRENDING */
 .trending{
 display:grid;
-grid-template-columns:2fr 1fr;
-gap:24px;
-margin-bottom:50px;
+grid-template-columns:1fr 320px;
+gap:20px;
 }
 
-.main-card{
-position:relative;
-border-radius:22px;
+.card{
+background:#fff;
+border-radius:16px;
+box-shadow:var(--shadow);
 overflow:hidden;
+transition:.3s;
 }
 
-.main-card img{
+.card:hover{
+transform:translateY(-4px);
+}
+
+.card img{
 width:100%;
 height:100%;
 object-fit:cover;
@@ -165,300 +173,204 @@ object-fit:cover;
 .overlay{
 position:absolute;
 bottom:0;
-padding:26px;
-color:white;
-background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);
+padding:20px;
+color:#fff;
+background:linear-gradient(transparent,rgba(0,0,0,.8));
+width:100%;
 }
 
-.overlay h3{
-font-size:24px;
-margin:10px 0;
-}
-
-.author{
-display:flex;
-align-items:center;
-gap:10px;
-margin-top:12px;
-}
-
-.author img{
-width:32px;height:32px;border-radius:50%;
-}
-
-/* SIDE CARDS */
-.side-card{
-background:#F3F5FB;
-padding:18px;
-border-radius:18px;
-margin-bottom:16px;
-transition:0.25s;
-}
-
-.side-card:hover{
-transform:translateY(-4px);
-}
-
-.side-tag{
-font-size:11px;
-font-weight:700;
-margin-bottom:6px;
-}
-
-.side-card:nth-child(1) .side-tag{color:#007AFF;}
-.side-card:nth-child(2) .side-tag{color:#6D28D9;}
-.side-card:nth-child(3) .side-tag{color:#C2410C;}
-
-/* EVENTS */
+/* ─── EVENTS ─── */
 .events{
+margin-top:30px;
 display:grid;
-grid-template-columns:2fr 1fr;
-gap:24px;
-margin-bottom:50px;
+grid-template-columns:1fr 280px;
+gap:20px;
 }
 
 .event{
-background:#F3F5FB;
-padding:18px;
-border-radius:18px;
+background:#fff;
+padding:16px;
+border-radius:12px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:14px;
-border-left:4px solid;
-transition:0.2s;
+margin-bottom:10px;
+box-shadow:var(--shadow);
 }
 
-.event:hover{transform:scale(1.02)}
-
-.event:nth-child(2){border-color:#00D1FF;}
-.event:nth-child(3){border-color:#0052FF;}
-.event:nth-child(4){border-color:#FF5C00;}
-
-.date{
-font-weight:700;
-color:#0052FF;
+.event strong{
 font-size:14px;
 }
 
-.plus{
-width:36px;height:36px;
-border-radius:50%;
-border:1px solid #D1D5DB;
-display:flex;
-align-items:center;
-justify-content:center;
+.event small{
+font-size:12px;
+color:var(--muted);
 }
 
-/* CULTURE */
+/* ─── CULTURE ─── */
 .culture{
-background:linear-gradient(#F8FAFC,#EEF2FF);
-padding:22px;
-border-radius:22px;
+background:#fff;
+padding:20px;
+border-radius:16px;
+box-shadow:var(--shadow);
 }
 
-.row{
-display:flex;
-gap:10px;
-margin-bottom:14px;
-}
-
-.row img{
+.culture img{
 width:48%;
-border-radius:14px;
+border-radius:10px;
 }
 
-.avatars{
-display:flex;
-margin-top:10px;
-}
-
-.avatars img{
-width:30px;height:30px;
-border-radius:50%;
-border:2px solid white;
-margin-left:-8px;
-}
-
-/* QUICK */
+/* ─── QUICK ─── */
 .quick{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:18px;
-margin-bottom:50px;
+gap:12px;
+margin-top:30px;
 }
 
-.q{
-background:#EEF2FF;
-padding:22px;
-border-radius:18px;
-transition:0.25s;
+.quick div{
+background:#fff;
+padding:18px;
+border-radius:12px;
+text-align:center;
+box-shadow:var(--shadow);
 }
 
-.q:hover{
-transform:translateY(-6px);
-background:#E0E7FF;
+/* ─── FOOTER ─── */
+footer{
+margin-top:30px;
+padding:20px;
+background:#fff;
+border-top:1px solid #e5e7eb;
 }
 
-/* FOOTER */
 .footer{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding-top:20px;
-border-top:1px solid #E5E7EB;
-color:#6B7280;
-font-size:14px;
+max-width:960px;margin:auto;
+display:flex;justify-content:space-between;
+font-size:12px;
 }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-.hero{grid-template-columns:1fr}
-.trending{grid-template-columns:1fr}
-.events{grid-template-columns:1fr}
-.quick{grid-template-columns:1fr 1fr}
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+.trending,.events{
+grid-template-columns:1fr;
 }
-
+.quick{
+grid-template-columns:1fr 1fr;
+}
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div id="intro"><h1>OOTB</h1></div>
 
-<!-- NAV -->
+<nav>
 <div class="nav">
-<div class="logo">OOTB</div>
-<div class="nav-links">
 <a class="active">News</a>
 <a>Spotlight</a>
 <a>Culture</a>
 <a>Events</a>
 </div>
-</div>
+</nav>
 
-<!-- HERO -->
 <div class="hero">
-<div class="hero-left">
-<div class="tag">INTERNAL PORTAL</div>
-<h1>Hello, Team!<br><span>Ready to create?</span></h1>
-<p>Welcome back to the OOTB canvas. Explore updates and connect with your peers.</p>
-<div class="btns">
-<button class="btn-primary">Submit Weekly Spark →</button>
-<button class="btn-secondary">View Handbook</button>
+<div class="hero-box">
+<div>
+<div style="font-size:10px;background:#00d4c8;padding:4px 10px;border-radius:50px;width:max-content;margin-bottom:10px;">INTERNAL PORTAL</div>
+<h1>Hello, Team!</h1>
+<h2>Ready to create?</h2>
+<p>Welcome back to the OOTB canvas.</p>
+<a class="btn btn-primary">Submit Weekly Spark →</a>
+<a class="btn btn-outline">View Handbook</a>
 </div>
 </div>
-<div class="hero-right"></div>
 </div>
 
-<!-- TRENDING -->
-<h2 class="section-title">Trending Now</h2>
-<p class="section-sub">The pulse of Out of the Blue today.</p>
+<div class="container">
+
+<div class="section-title">Trending Now</div>
+<div class="sub">The pulse of Out of the Blue today.</div>
 
 <div class="trending">
-
-<div class="main-card">
-<img src="https://images.unsplash.com/photo-1556761175-b413da4baf72">
+<div class="card" style="position:relative;height:300px;">
+<img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c">
 <div class="overlay">
-<span class="tag">Internal Spotlight</span>
-<h3>Innovation Lab: Q3 Breakthroughs in AI Integration</h3>
-<p>Discover how our creative teams are leveraging neural networks...</p>
-<div class="author">
-<img src="https://i.pravatar.cc/100">
-<span>Marcus Thorne • 5 min read</span>
-</div>
+<strong>Innovation Lab: Q3 Breakthroughs</strong>
 </div>
 </div>
 
 <div>
-<div class="side-card">
-<div class="side-tag">ANNOUNCEMENTS</div>
-<h4>New Hybrid Work Policy Update</h4>
-<p>Exploring flexibility while maintaining creativity.</p>
+<div class="card" style="padding:15px;margin-bottom:10px;">
+<strong>New Hybrid Work Policy</strong>
+<p class="sub">Flexibility update</p>
 </div>
-
-<div class="side-card">
-<div class="side-tag">AWARDS</div>
-<h4>OOTB Wins 'Best Agency' 2024</h4>
-<p>Latest industry recognition.</p>
+<div class="card" style="padding:15px;margin-bottom:10px;">
+<strong>OOTB Wins Award</strong>
+<p class="sub">Industry recognition</p>
 </div>
-
-<div class="side-card">
-<div class="side-tag">INTERNAL STORY</div>
-<h4>Mural Project</h4>
-<p>Creative workspace transformation.</p>
+<div class="card" style="padding:15px;">
+<strong>Mural Project</strong>
+<p class="sub">Creative transformation</p>
+</div>
 </div>
 </div>
 
-</div>
-
-<!-- EVENTS + CULTURE -->
 <div class="events">
 
 <div>
-<h2 class="section-title">Upcoming Events</h2>
+<div class="section-title">Upcoming Events</div>
 
 <div class="event">
 <div>
-<div class="date">12 OCT</div>
-<h4>Creative Coffee Hour</h4>
+<strong>Creative Coffee Hour</strong><br>
+<small>10:00 AM</small>
 </div>
-<div class="plus">+</div>
-</div>
-
-<div class="event">
-<div>
-<div class="date">15 OCT</div>
-<h4>Town Hall</h4>
-</div>
-<div class="plus">+</div>
+<div>+</div>
 </div>
 
 <div class="event">
 <div>
-<div class="date">22 OCT</div>
-<h4>Halloween Contest</h4>
+<strong>Town Hall</strong><br>
+<small>03:30 PM</small>
 </div>
-<div class="plus">+</div>
+<div>+</div>
+</div>
+
+<div class="event">
+<div>
+<strong>Halloween Contest</strong><br>
+<small>All Day</small>
+</div>
+<div>+</div>
 </div>
 
 </div>
 
 <div class="culture">
-<h3>Culture Preview</h3>
-<div class="row">
-<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
-<img src="https://images.unsplash.com/photo-1552664730-d307ca884978">
-</div>
-
-<h4>#OutInTheWild</h4>
-<p>Our culture goes beyond desks — it's about experiences.</p>
-
-<div class="avatars">
-<img src="https://i.pravatar.cc/1">
-<img src="https://i.pravatar.cc/2">
-<img src="https://i.pravatar.cc/3">
+<strong>Culture Preview</strong><br><br>
+<img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac">
+<img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0">
 </div>
 
 </div>
 
-</div>
-
-<!-- QUICK -->
 <div class="quick">
-<div class="q"><h4>Handbook</h4><p>Rules of the canvas.</p></div>
-<div class="q"><h4>Benefits</h4><p>Health & Wellness info.</p></div>
-<div class="q"><h4>Payroll</h4><p>View your earnings.</p></div>
-<div class="q"><h4>Directory</h4><p>Connect with team.</p></div>
+<div>Handbook</div>
+<div>Benefits</div>
+<div>Payroll</div>
+<div>Directory</div>
 </div>
 
-<!-- FOOTER -->
+</div>
+
+<footer>
 <div class="footer">
 <div>OOTB © 2026</div>
-<div>Contact • Privacy • Terms • Internal Handbook</div>
+<div>Contact · Privacy · Terms</div>
 </div>
-
-</div>
+</footer>
 
 </body>
 </html>
