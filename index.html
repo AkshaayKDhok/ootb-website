@@ -5,229 +5,273 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OOTB</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-body{background:#f6f9ff;color:#0f172a;overflow-x:hidden;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+body{background:#f6f8fc;color:#0f172a;scroll-behavior:smooth}
 
-#intro{
-position:fixed;width:100%;height:100%;
-background:#0052ff;
-display:flex;align-items:center;justify-content:center;
-z-index:9999;
-animation:fadeOut 2.5s forwards;
-}
-#intro h1{
-color:white;font-size:60px;letter-spacing:8px;
-animation:zoomIn 1.5s;
-}
-@keyframes zoomIn{0%{opacity:0;transform:scale(0.5);}100%{opacity:1;}}
-@keyframes fadeOut{0%{opacity:1;}80%{opacity:1;}100%{opacity:0;visibility:hidden;}}
-
-#cursor-glow{
-position:fixed;width:200px;height:200px;
-background:radial-gradient(circle,#0052ff33,transparent);
-border-radius:50%;
-pointer-events:none;
-transform:translate(-50%,-50%);
-}
-
+/* NAVBAR */
 nav{
-position:fixed;width:100%;
-background:rgba(255,255,255,0.7);
-backdrop-filter:blur(10px);
+position:fixed;width:100%;top:0;
+background:rgba(255,255,255,0.8);
+backdrop-filter:blur(12px);
 display:flex;justify-content:space-between;
-padding:15px 8%;z-index:1000;
+padding:18px 40px;z-index:1000;
+transition:0.3s
 }
-nav h2{color:#0052ff;}
-nav a{margin-left:20px;text-decoration:none;color:#333;}
+nav.scrolled{box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+.logo{font-weight:700;color:#0052ff;font-size:20px}
+nav ul{display:flex;gap:25px;list-style:none}
+nav a{text-decoration:none;color:#0f172a;font-size:14px}
 
+/* HERO */
 .hero{
 height:100vh;
 display:flex;flex-direction:column;
 justify-content:center;align-items:center;
 text-align:center;
-background:linear-gradient(135deg,#0052ff,#00d1ff);
-color:white;position:relative;
-}
-.hero h1{font-size:50px;margin-bottom:10px;}
-
-.hero-glow{
-position:absolute;width:500px;height:500px;
-background:radial-gradient(circle,#00d1ff,transparent);
-top:-100px;left:-100px;
-opacity:0.3;
-animation:moveGlow 8s infinite alternate;
-}
-@keyframes moveGlow{to{transform:translate(200px,200px);}}
-
-section{padding:80px 8%;}
-.section-alt{background:#eef4ff;}
-h2{margin-bottom:30px;}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+color:white;
+background:linear-gradient(120deg,#0052ff,#00d4ff);
+position:relative;
+overflow:hidden
 }
 
+.hero::before{
+content:"";
+position:absolute;
+width:600px;height:600px;
+background:radial-gradient(circle,rgba(255,255,255,0.3),transparent);
+filter:blur(100px);
+animation:move 10s infinite alternate
+}
+
+@keyframes move{
+0%{transform:translate(-100px,-100px)}
+100%{transform:translate(120px,120px)}
+}
+
+.hero h1{font-size:48px;margin-bottom:15px;animation:fadeUp 1s}
+.hero p{opacity:0.9;animation:fadeUp 1.2s}
+
+.hero-buttons{margin-top:25px}
+.btn{
+padding:12px 24px;border-radius:8px;
+cursor:pointer;border:none;margin:5px;
+transition:0.3s
+}
+.btn-primary{background:white;color:#0052ff}
+.btn-secondary{background:transparent;border:1px solid white;color:white}
+.btn:hover{transform:translateY(-4px)}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+/* SECTIONS */
+section{padding:90px 60px}
+.alt{background:#eef2f7}
+h2{margin-bottom:30px;font-size:24px}
+
+/* GRID */
+.grid{display:grid;gap:20px}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+/* CARD */
 .card{
-background:white;
-padding:20px;border-radius:12px;
-box-shadow:0 5px 20px rgba(0,0,0,0.05);
-transition:0.3s;
+background:white;padding:22px;border-radius:14px;
+transition:0.3s;position:relative
 }
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 20px 40px rgba(0,82,255,0.2);
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 25px 60px rgba(0,82,255,0.15)
 }
 
-.icon{font-size:20px;color:#0052ff;margin-bottom:10px;}
+.icon{color:#0052ff;margin-bottom:12px;font-size:18px}
 
+/* EMPLOYEE */
 .avatar{
-width:50px;height:50px;
+width:42px;height:42px;border-radius:50%;
 background:#0052ff;color:white;
-border-radius:50%;
 display:flex;align-items:center;justify-content:center;
-margin:0 auto 10px;
+font-size:12px;margin-bottom:12px
 }
+
+.social-icons{
+margin-top:8px;
+opacity:0;
+transition:0.3s
+}
+.card:hover .social-icons{opacity:1}
 
 .social-icons i{
-margin:0 5px;
-cursor:pointer;color:#777;
+margin-right:8px;font-size:14px;color:#64748b;
+cursor:pointer
 }
-.social-icons i:hover{color:#0052ff;}
 
+/* TESTIMONIAL */
 .testimonial{
-background:#eef4ff;
-padding:20px;border-radius:10px;
+background:#eef2f7;padding:20px;border-radius:10px;
+font-size:14px
 }
 
+/* CONTACT */
 .contact{
 background:#0f172a;color:white;
-padding:30px;border-radius:12px;
+padding:30px;border-radius:14px;
+line-height:1.8
 }
-.contact p{margin:10px 0;}
+.contact i{margin-right:10px}
 
+/* FOOTER */
 .footer{
-background:#eef4ff;
-padding:60px 8%;
-}
-.footer-grid{
+border-top:1px solid #e2e8f0;
+padding:50px 60px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px
 }
-.footer a{text-decoration:none;color:#333;}
-.footer-social i{
-margin-right:10px;
+.footer h4{margin-bottom:12px}
+.footer a{
+display:block;color:#64748b;
+text-decoration:none;margin-bottom:6px;
+font-size:14px
+}
+
+.social i{
+margin-right:12px;
+font-size:16px;
 cursor:pointer;
+color:#0f172a
 }
-.footer-social i:hover{color:#0052ff;}
-.copyright{text-align:center;margin-top:20px;}
+
+.copy{
+text-align:center;
+padding:20px;
+font-size:14px;
+color:#64748b
+}
+
+/* SCROLL ANIMATION */
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:0.8s ease;
+}
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+nav{padding:15px}
+section{padding:60px 20px}
+.hero h1{font-size:32px}
+}
 </style>
 </head>
 
 <body>
 
-<div id="intro"><h1>OOTB</h1></div>
-<div id="cursor-glow"></div>
-
-<nav>
-<h2>OOTB</h2>
-<div>
-<a href="#">Home</a>
-<a href="#culture">Culture</a>
-<a href="#spotlight">Spotlight</a>
-<a href="#events">Events</a>
-</div>
+<nav id="nav">
+<div class="logo">OOTB</div>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#culture">Culture</a></li>
+<li><a href="#spotlight">Spotlight</a></li>
+<li><a href="#events">Events</a></li>
+</ul>
 </nav>
 
-<section class="hero">
-<div class="hero-glow"></div>
+<div class="hero">
 <h1>Out Of The Blue</h1>
 <p>AI-Powered Venture Studio building scalable brands using automation & systems.</p>
-</section>
+<div class="hero-buttons">
+<button class="btn btn-primary">Explore Culture</button>
+<button class="btn btn-secondary">Join OOTB</button>
+</div>
+</div>
 
-<section>
+<section class="fade">
 <h2>Trending Now</h2>
-<div class="grid">
-<div class="card"><i class="fas fa-bolt icon"></i><h3>AI Growth Systems</h3><p>Automation-led marketing engines scaling brands.</p></div>
-<div class="card"><i class="fas fa-cogs icon"></i><h3>Internal Ops Upgrade</h3><p>System-driven workflows replacing manual execution.</p></div>
-<div class="card"><i class="fas fa-video icon"></i><h3>Content Engine</h3><p>High-speed pipelines for media.</p></div>
+<div class="grid grid-3">
+<div class="card"><i class="fas fa-bolt icon"></i><b>AI Growth Systems</b><p>Automation-led marketing engines scaling brands.</p></div>
+<div class="card"><i class="fas fa-cogs icon"></i><b>Internal Ops Upgrade</b><p>System-driven workflows replacing manual execution.</p></div>
+<div class="card"><i class="fas fa-video icon"></i><b>Content Engine</b><p>High-speed pipelines for media.</p></div>
 </div>
 </section>
 
-<section id="spotlight" class="section-alt">
+<section class="alt fade" id="spotlight">
 <h2>Employee Spotlight</h2>
-<div class="grid">
-<div class="card"><div class="avatar">AG</div><h3>Aniruddh Gupta</h3><p>Founder</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
-<div class="card"><div class="avatar">VS</div><h3>Vibha Surana</h3><p>Director</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
-<div class="card"><div class="avatar">AD</div><h3>Akshaay Dhok</h3><p>Head Ops</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
-<div class="card"><div class="avatar">LM</div><h3>Leena Makwana</h3><p>Accountant</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
-<div class="card"><div class="avatar">SP</div><h3>Surabhi Pandit</h3><p>Sound Engineer</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
-<div class="card"><div class="avatar">SC</div><h3>Shaun</h3><p>Physio</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
-<div class="card"><div class="avatar">AN</div><h3>Ankeeta</h3><p>Interior</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="grid grid-3">
+
+<div class="card"><div class="avatar">AG</div><b>Aniruddh</b><p>Founder & Director</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card"><div class="avatar">VS</div><b>Vibha</b><p>Director & CA</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card"><div class="avatar">AD</div><b>Akshaay</b><p>Head - Ops & Marketing</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card"><div class="avatar">LM</div><b>Leena</b><p>Accountant</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card"><div class="avatar">SP</div><b>Surabhi</b><p>Sound Engineer</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card"><div class="avatar">SC</div><b>Shaun</b><p>Physiotherapist</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+<div class="card"><div class="avatar">AN</div><b>Ankeeta</b><p>Interior Designer</p><div class="social-icons"><i class="fab fa-linkedin"></i><i class="fab fa-facebook"></i></div></div>
+
 </div>
 </section>
 
-<section id="culture">
+<section id="culture" class="fade">
 <h2>Our Culture</h2>
-<div class="grid">
-<div class="card"><i class="fas fa-rocket icon"></i><h3>Execution First</h3></div>
-<div class="card"><i class="fas fa-brain icon"></i><h3>Systems Thinking</h3></div>
-<div class="card"><i class="fas fa-user-tie icon"></i><h3>Ownership</h3></div>
+<div class="grid grid-3">
+<div class="card"><i class="fas fa-rocket icon"></i><b>Execution First</b><p>Speed & output over perfection.</p></div>
+<div class="card"><i class="fas fa-layer-group icon"></i><b>Systems Thinking</b><p>We build scalable processes.</p></div>
+<div class="card"><i class="fas fa-user-tie icon"></i><b>Ownership</b><p>Everyone operates like a founder.</p></div>
 </div>
-<p style="margin-top:20px;"><i>OOTB is a system where you evolve fast.</i></p>
+<p style="margin-top:20px;font-style:italic">OOTB is a system where you evolve fast.</p>
 </section>
 
-<section class="section-alt">
+<section class="alt fade">
 <h2>What Our Team Says</h2>
-<div class="grid">
-<div class="testimonial">Grow faster than anywhere else - Akshaay</div>
-<div class="testimonial">Execution unmatched - Surabhi</div>
-<div class="testimonial">You evolve here - Vibha</div>
+<div class="grid grid-3">
+<div class="testimonial">“Grow faster than anywhere else.” – Akshaay</div>
+<div class="testimonial">“Execution unmatched.” – Surabhi</div>
+<div class="testimonial">“You evolve here.” – Vibha</div>
 </div>
 </section>
 
-<section id="events">
+<section id="events" class="fade">
 <h2>Upcoming Events</h2>
-<div class="grid">
-<div class="card"><i class="fas fa-utensils icon"></i><h3>Team Lunch</h3></div>
-<div class="card"><i class="fas fa-award icon"></i><h3>Employee of Month</h3></div>
-<div class="card"><i class="fas fa-chart-line icon"></i><h3>Strategy Meet</h3></div>
+<div class="grid grid-3">
+<div class="card"><i class="fas fa-utensils icon"></i><b>Team Lunch</b><p>Monthly bonding</p></div>
+<div class="card"><i class="fas fa-award icon"></i><b>Employee of the Month</b><p>Recognition system</p></div>
+<div class="card"><i class="fas fa-chart-line icon"></i><b>Strategy Meet</b><p>Quarterly planning</p></div>
 </div>
 </section>
 
-<section>
+<section class="fade">
 <div class="contact">
 <h2>Contact Us</h2>
 <p><i class="fas fa-envelope"></i> akshaay.d@ootb.work</p>
 <p><i class="fas fa-phone"></i> +91-9767647583</p>
-<p><i class="fas fa-map-marker-alt"></i> Baner, Pune</p>
+<p><i class="fas fa-location-dot"></i> Baner, Pune</p>
 </div>
 </section>
 
-<footer class="footer">
-<div class="footer-grid">
+<div class="footer">
 <div>
-<h3>Out Of The Blue</h3>
+<h4>Out Of The Blue</h4>
 <p>Building internet-first brands using AI, automation, and systems.</p>
 </div>
 
 <div>
 <h4>Quick Links</h4>
-<p><a href="#">Home</a></p>
-<p><a href="#culture">Culture</a></p>
-<p><a href="#spotlight">Spotlight</a></p>
-<p><a href="#events">Events</a></p>
+<a href="#">Home</a>
+<a href="#culture">Culture</a>
+<a href="#spotlight">Spotlight</a>
+<a href="#events">Events</a>
 </div>
 
 <div>
 <h4>Social</h4>
-<div class="footer-social">
+<div class="social">
 <i class="fab fa-facebook"></i>
 <i class="fab fa-instagram"></i>
 <i class="fab fa-linkedin"></i>
@@ -235,18 +279,23 @@ cursor:pointer;
 <i class="fab fa-x-twitter"></i>
 </div>
 </div>
-
 </div>
 
-<p class="copyright">© 2026 Out Of The Blue</p>
-</footer>
+<div class="copy">© 2026 Out Of The Blue</div>
 
 <script>
-document.addEventListener("mousemove",(e)=>{
-let g=document.getElementById("cursor-glow");
-g.style.left=e.clientX+"px";
-g.style.top=e.clientY+"px";
-});
+window.addEventListener("scroll",()=>{
+document.getElementById("nav").classList.toggle("scrolled",window.scrollY>50)
+})
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
+}
+})
+})
+document.querySelectorAll(".fade").forEach(el=>observer.observe(el))
 </script>
 
 </body>
