@@ -3,86 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OOTB v2</title>
+<title>OOTB V2</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
+/* ================= BASE ================= */
 :root{
 --primary:#0052FF;
 --secondary:#00D1FF;
---bg:#F5F7FB;
+--bg:#F4F6FB;
 --text:#0F172A;
---card:#ffffff;
+--muted:#6B7280;
+--card:#FFFFFF;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
 
 body{
 background:var(--bg);
 color:var(--text);
-overflow-x:hidden;
 }
 
-/* CONTAINER */
+/* ================= LAYOUT ================= */
 .container{
 max-width:1200px;
 margin:auto;
-padding:40px 20px;
+padding:30px 20px;
 }
 
-/* NAVBAR */
+/* ================= NAV ================= */
 .nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 40px;
+padding:18px 30px;
 background:white;
-position:sticky;
-top:0;
-z-index:100;
 }
 
-.nav a{
+.nav-links a{
 margin-left:25px;
 text-decoration:none;
 color:#555;
 font-weight:500;
 }
 
-.nav a.active{
+.nav-links .active{
 color:var(--primary);
 border-bottom:2px solid var(--primary);
-padding-bottom:5px;
+padding-bottom:4px;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero{
-margin:20px auto;
+margin-top:20px;
 border-radius:30px;
 display:grid;
 grid-template-columns:1fr 1fr;
 overflow:hidden;
-background:linear-gradient(135deg,var(--primary),#1e3aff);
+background:linear-gradient(135deg,#0040ff,#0052ff);
 color:white;
 position:relative;
 }
 
-.hero::after{
-content:"";
-position:absolute;
-right:0;
-top:0;
-width:50%;
-height:100%;
-background:url("https://images.unsplash.com/photo-1635070041078-e363dbe005cb") center/cover no-repeat;
-opacity:0.35;
+.hero-right{
+background:url("https://images.unsplash.com/photo-1635070041078-e363dbe005cb") center/cover;
+opacity:0.25;
 }
 
 .hero-content{
 padding:60px;
-z-index:2;
 }
 
 .badge{
@@ -90,37 +86,39 @@ background:#00D1FF;
 color:#000;
 padding:6px 14px;
 border-radius:20px;
-display:inline-block;
 font-size:12px;
-margin-bottom:20px;
 font-weight:600;
+display:inline-block;
+margin-bottom:20px;
 }
 
 .hero h1{
 font-size:52px;
 line-height:1.1;
+font-weight:800;
 }
 
 .hero h1 span{
-color:#8bd3ff;
+color:#7ed7ff;
 }
 
 .hero p{
 margin-top:20px;
-opacity:0.85;
+color:#dbeafe;
 }
 
 .hero-buttons{
 margin-top:30px;
+display:flex;
+gap:12px;
 }
 
 .btn{
-padding:14px 22px;
+padding:14px 20px;
 border-radius:12px;
-margin-right:10px;
 font-weight:600;
 cursor:pointer;
-border:none;
+transition:0.3s;
 }
 
 .btn-primary{
@@ -128,24 +126,28 @@ background:white;
 color:var(--primary);
 }
 
+.btn-primary:hover{
+transform:translateY(-2px);
+}
+
 .btn-outline{
-background:transparent;
 border:1px solid rgba(255,255,255,0.5);
 color:white;
 }
 
-/* TRENDING */
+/* ================= TITLES ================= */
 .section-title{
 font-size:26px;
 font-weight:700;
-margin-bottom:5px;
+margin-top:40px;
 }
 
 .section-sub{
-color:#666;
+color:var(--muted);
 margin-bottom:20px;
 }
 
+/* ================= TRENDING ================= */
 .trending{
 display:grid;
 grid-template-columns:2fr 1fr;
@@ -156,7 +158,6 @@ gap:25px;
 position:relative;
 border-radius:20px;
 overflow:hidden;
-color:white;
 }
 
 .big-card img{
@@ -165,11 +166,12 @@ height:100%;
 object-fit:cover;
 }
 
-.big-overlay{
+.overlay{
 position:absolute;
 bottom:0;
 padding:20px;
-background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);
+color:white;
+background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);
 width:100%;
 }
 
@@ -187,11 +189,11 @@ transition:0.3s;
 }
 
 .small-card:hover{
-transform:translateY(-5px);
+transform:translateY(-4px);
 box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* EVENTS + CULTURE */
+/* ================= EVENTS ================= */
 .grid-2{
 display:grid;
 grid-template-columns:1.5fr 1fr;
@@ -201,17 +203,17 @@ margin-top:50px;
 
 .event{
 background:white;
-padding:20px;
+padding:18px;
 border-radius:16px;
-margin-bottom:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+margin-bottom:15px;
 transition:0.3s;
 }
 
 .event:hover{
-transform:scale(1.02);
+transform:translateY(-3px);
 }
 
 .date{
@@ -219,13 +221,14 @@ font-weight:700;
 color:var(--primary);
 }
 
+/* ================= CULTURE ================= */
 .culture{
 background:white;
 padding:25px;
 border-radius:20px;
 }
 
-/* CARDS */
+/* ================= QUICK ================= */
 .quick{
 display:grid;
 grid-template-columns:repeat(4,1fr);
@@ -245,37 +248,24 @@ transition:0.3s;
 transform:translateY(-6px);
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 .footer{
 margin-top:60px;
-padding:40px;
-background:white;
+padding:40px 20px;
 display:flex;
 justify-content:space-between;
-align-items:center;
+flex-wrap:wrap;
+gap:20px;
 }
 
-/* CURSOR GLOW */
-.cursor{
-position:fixed;
-width:200px;
-height:200px;
-background:radial-gradient(circle,var(--secondary),transparent);
-pointer-events:none;
-opacity:0.2;
-border-radius:50%;
-transform:translate(-50%,-50%);
-z-index:1;
-}
-
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 @media(max-width:900px){
 
 .hero{
 grid-template-columns:1fr;
 }
 
-.hero::after{
+.hero-right{
 display:none;
 }
 
@@ -298,12 +288,10 @@ grid-template-columns:1fr 1fr;
 
 <body>
 
-<div class="cursor" id="cursor"></div>
-
 <!-- NAV -->
 <div class="nav">
-<div><b>OOTB</b></div>
-<div>
+<b>OOTB</b>
+<div class="nav-links">
 <a class="active">News</a>
 <a>Spotlight</a>
 <a>Culture</a>
@@ -317,14 +305,18 @@ grid-template-columns:1fr 1fr;
 <div class="hero">
 <div class="hero-content">
 <div class="badge">INTERNAL PORTAL</div>
+
 <h1>Hello, Team!<br><span>Ready to create?</span></h1>
+
 <p>Welcome back to the OOTB canvas. Explore updates and connect with your peers.</p>
 
 <div class="hero-buttons">
-<button class="btn btn-primary">Submit Weekly Spark →</button>
-<button class="btn btn-outline">View Handbook</button>
+<div class="btn btn-primary">Submit Weekly Spark →</div>
+<div class="btn btn-outline">View Handbook</div>
 </div>
 </div>
+
+<div class="hero-right"></div>
 </div>
 
 <!-- TRENDING -->
@@ -335,10 +327,10 @@ grid-template-columns:1fr 1fr;
 
 <div class="big-card">
 <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72">
-<div class="big-overlay">
+<div class="overlay">
 <p>Internal Spotlight</p>
 <h3>Innovation Lab: Q3 Breakthroughs in AI Integration</h3>
-<p style="font-size:13px;margin-top:10px;">Marcus Thorne • 5 min read</p>
+<p style="font-size:13px;">Marcus Thorne • 5 min read</p>
 </div>
 </div>
 
@@ -370,26 +362,17 @@ grid-template-columns:1fr 1fr;
 <h2 class="section-title">Upcoming Events</h2>
 
 <div class="event">
-<div>
-<div class="date">12 OCT</div>
-Creative Coffee Hour
-</div>
+<div><span class="date">12 OCT</span><br>Creative Coffee Hour</div>
 <div>+</div>
 </div>
 
 <div class="event">
-<div>
-<div class="date">15 OCT</div>
-Town Hall
-</div>
+<div><span class="date">15 OCT</span><br>Town Hall</div>
 <div>+</div>
 </div>
 
 <div class="event">
-<div>
-<div class="date">22 OCT</div>
-Halloween Contest
-</div>
+<div><span class="date">22 OCT</span><br>Halloween Contest</div>
 <div>+</div>
 </div>
 
@@ -399,7 +382,6 @@ Halloween Contest
 <h3>Culture Preview</h3>
 <p>#OutInTheWild</p>
 <p>Our culture goes beyond desks — it's about experiences.</p>
-<button class="btn btn-primary" style="margin-top:20px;">Explore Our Values</button>
 </div>
 
 </div>
@@ -407,25 +389,10 @@ Halloween Contest
 <!-- QUICK -->
 <div class="quick">
 
-<div class="q-card">
-<b>Handbook</b>
-<p>Rules of the canvas.</p>
-</div>
-
-<div class="q-card">
-<b>Benefits</b>
-<p>Health & Wellness info.</p>
-</div>
-
-<div class="q-card">
-<b>Payroll</b>
-<p>View your earnings.</p>
-</div>
-
-<div class="q-card">
-<b>Directory</b>
-<p>Connect with team.</p>
-</div>
+<div class="q-card"><b>Handbook</b><p>Rules of the canvas.</p></div>
+<div class="q-card"><b>Benefits</b><p>Health & Wellness info.</p></div>
+<div class="q-card"><b>Payroll</b><p>View your earnings.</p></div>
+<div class="q-card"><b>Directory</b><p>Connect with team.</p></div>
 
 </div>
 
@@ -443,14 +410,6 @@ Contact • Privacy • Terms • Internal Handbook
 </div>
 
 </div>
-
-<script>
-const cursor = document.getElementById("cursor");
-document.addEventListener("mousemove", e=>{
-cursor.style.left = e.clientX+"px";
-cursor.style.top = e.clientY+"px";
-});
-</script>
 
 </body>
 </html>
