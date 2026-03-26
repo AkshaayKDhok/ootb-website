@@ -1,81 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>OOTB - Out Of The Blue</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OOTB - Out Of The Blue</title>
 
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      margin: 0;
-      background: #f7f9fc;
-      color: #111;
-    }
+<style>
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 40px;
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    header h2 {
-      margin: 0;
-      color: #2563eb;
-    }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f7fb;
+  color: #111;
+  line-height: 1.6;
+}
 
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
+/* NAVBAR */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-    .hero {
-      padding: 80px 40px;
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      color: white;
-      text-align: center;
-    }
+header h2 {
+  color: #2563eb;
+}
 
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
 
-    .section {
-      padding: 60px 40px;
-      max-width: 1100px;
-      margin: auto;
-    }
+nav a:hover {
+  color: #2563eb;
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #2563eb, #1e3a8a);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    }
+.hero h1 {
+  font-size: 48px;
+}
 
-    .highlight {
-      background: #2563eb;
-      color: white;
-    }
+.hero p {
+  margin-top: 10px;
+  font-size: 18px;
+}
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: white;
-      margin-top: 40px;
-    }
-  </style>
+/* SECTION */
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+.section h2 {
+  margin-bottom: 30px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* FEATURE CARD */
+.feature {
+  background: #2563eb;
+  color: white;
+}
+
+/* EMPLOYEE */
+.employee {
+  text-align: center;
+}
+
+.employee h4 {
+  margin-top: 10px;
+}
+
+/* TESTIMONIAL */
+.testimonial {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* CONTACT */
+.contact {
+  background: #111;
+  color: white;
+  padding: 40px;
+  border-radius: 12px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: white;
+  margin-top: 40px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1 {
+    font-size: 32px;
+  }
+}
+
+</style>
 </head>
 
 <body>
@@ -84,93 +152,139 @@
   <h2>OOTB</h2>
   <nav>
     <a href="#">Home</a>
-    <a href="#">Culture</a>
-    <a href="#">Spotlight</a>
-    <a href="#">Events</a>
+    <a href="#culture">Culture</a>
+    <a href="#spotlight">Spotlight</a>
+    <a href="#events">Events</a>
   </nav>
 </header>
 
 <section class="hero">
   <h1>Out Of The Blue (OOTB)</h1>
-  <p>AI-Powered Venture Studio</p>
+  <p><strong>AI-Powered Venture Studio</strong></p>
   <p>We build and scale internet-first brands using AI, automation, and systems.</p>
 </section>
 
 <section class="section">
   <h2>Trending Now</h2>
-  <div class="cards">
-    <div class="card highlight">
-      <h3>AI Breakthrough</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <div class="grid grid-3">
+    <div class="card feature">
+      <h3>AI Growth Systems</h3>
+      <p>We are building scalable marketing engines powered by AI workflows.</p>
     </div>
     <div class="card">
-      <h3>Policy Update</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h3>Internal Upgrade</h3>
+      <p>Teams are shifting towards automation-first execution systems.</p>
     </div>
     <div class="card">
-      <h3>Internal Story</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h3>Creative Production</h3>
+      <p>New content pipelines enabling faster video and media creation.</p>
     </div>
   </div>
 </section>
 
-<section class="section">
+<section id="spotlight" class="section">
   <h2>Employee Spotlight</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Marcus Chen</h3>
-      <p>Improved product engagement by 40%.</p>
+  <div class="grid grid-3">
+
+    <div class="card employee">
+      <h3>Aniruddh Gupta</h3>
+      <p>Founder & Director</p>
     </div>
-    <div class="card">
-      <h3>Project Nebula</h3>
-      <p>Delivered 2 weeks ahead of schedule.</p>
+
+    <div class="card employee">
+      <h3>Vibha Surana</h3>
+      <p>Director & CA</p>
     </div>
-    <div class="card">
-      <h3>Innovation Award</h3>
-      <p>Creative Excellence 2024</p>
+
+    <div class="card employee">
+      <h3>Akshaay Dhok</h3>
+      <p>Head of Operations & Marketing</p>
     </div>
+
+    <div class="card employee">
+      <h3>Leena Makwana</h3>
+      <p>Accountant</p>
+    </div>
+
+    <div class="card employee">
+      <h3>Surabhi Pandit</h3>
+      <p>Sound Engineer</p>
+    </div>
+
+    <div class="card employee">
+      <h3>Shaun</h3>
+      <p>Physiotherapist</p>
+    </div>
+
+    <div class="card employee">
+      <h3>Ankeeta</h3>
+      <p>Interior Designer</p>
+    </div>
+
   </div>
 </section>
 
-<section class="section">
+<section id="culture" class="section">
   <h2>Our Culture</h2>
-  <div class="cards">
+  <div class="grid grid-3">
+
     <div class="card">
-      <h3>Relentless Innovation</h3>
-      <p>Lorem ipsum dolor sit amet.</p>
+      <h3>Execution First</h3>
+      <p>Ideas are useless without execution. We prioritize speed and output.</p>
     </div>
+
     <div class="card">
-      <h3>Radical Inclusion</h3>
-      <p>Lorem ipsum dolor sit amet.</p>
+      <h3>Systems Thinking</h3>
+      <p>We build repeatable systems, not one-time efforts.</p>
     </div>
+
     <div class="card">
-      <h3>Transparency</h3>
-      <p>Lorem ipsum dolor sit amet.</p>
+      <h3>Ownership Mindset</h3>
+      <p>Everyone acts like a founder and takes full responsibility.</p>
     </div>
+
+  </div>
+
+  <br><br>
+
+  <div class="testimonial">
+    <p><strong>“OOTB is not a workplace. It’s a system where you evolve fast or get left behind.”</strong></p>
+  </div>
+
+</section>
+
+<section id="events" class="section">
+  <h2>Upcoming Events</h2>
+  <div class="grid grid-3">
+
+    <div class="card">
+      <h3>Team Lunch</h3>
+      <p>Monthly team bonding session.</p>
+    </div>
+
+    <div class="card">
+      <h3>Employee of the Month</h3>
+      <p>Recognizing outstanding contributions.</p>
+    </div>
+
+    <div class="card">
+      <h3>Strategy Meet</h3>
+      <p>Quarterly planning and alignment session.</p>
+    </div>
+
   </div>
 </section>
 
 <section class="section">
-  <h2>Upcoming Events</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Creative Meetup</h3>
-      <p>Oct 12 - Main Lounge</p>
-    </div>
-    <div class="card">
-      <h3>Townhall</h3>
-      <p>Oct 15 - Cinema Room</p>
-    </div>
-    <div class="card">
-      <h3>Hackathon</h3>
-      <p>Oct 22 - Studio</p>
-    </div>
+  <div class="contact">
+    <h2>Contact Us</h2>
+    <p>Email: akshaay.d@ootb.work</p>
+    <p>Phone / WhatsApp: +91-9767647583</p>
   </div>
 </section>
 
 <footer>
   <p>© 2026 Out Of The Blue</p>
-  <p>akshaay.d@ootb.work</p>
 </footer>
 
 </body>
