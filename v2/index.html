@@ -3,254 +3,294 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OOTB V2</title>
+<title>OOTB v2</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+:root{
+--primary:#0052FF;
+--secondary:#00D1FF;
+--bg:#F5F7FB;
+--text:#0F172A;
+--card:#ffffff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 
 body{
-background:#f3f5fb;
-padding:20px;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
 }
 
-/* MAIN CONTAINER */
-.wrapper{
-max-width:1250px;
+/* CONTAINER */
+.container{
+max-width:1200px;
 margin:auto;
-border:3px solid #6c63ff;
-border-radius:20px;
-padding:20px;
-background:#fff;
+padding:40px 20px;
 }
 
-/* NAV */
-nav{
+/* NAVBAR */
+.nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:10px 10px 20px;
+padding:20px 40px;
+background:white;
+position:sticky;
+top:0;
+z-index:100;
 }
 
-nav .links a{
-margin-left:20px;
+.nav a{
+margin-left:25px;
 text-decoration:none;
-color:#444;
+color:#555;
 font-weight:500;
+}
+
+.nav a.active{
+color:var(--primary);
+border-bottom:2px solid var(--primary);
+padding-bottom:5px;
 }
 
 /* HERO */
 .hero{
+margin:20px auto;
+border-radius:30px;
 display:grid;
 grid-template-columns:1fr 1fr;
-border-radius:20px;
 overflow:hidden;
-background:linear-gradient(135deg,#0052ff,#00c6ff);
+background:linear-gradient(135deg,var(--primary),#1e3aff);
+color:white;
+position:relative;
 }
 
-.hero-left{
-padding:50px;
-color:#fff;
+.hero::after{
+content:"";
+position:absolute;
+right:0;
+top:0;
+width:50%;
+height:100%;
+background:url("https://images.unsplash.com/photo-1635070041078-e363dbe005cb") center/cover no-repeat;
+opacity:0.35;
 }
 
-.tag{
-background:#00d1a7;
-padding:6px 12px;
+.hero-content{
+padding:60px;
+z-index:2;
+}
+
+.badge{
+background:#00D1FF;
+color:#000;
+padding:6px 14px;
 border-radius:20px;
-font-size:12px;
 display:inline-block;
+font-size:12px;
 margin-bottom:20px;
+font-weight:600;
 }
 
 .hero h1{
-font-size:42px;
-line-height:1.2;
+font-size:52px;
+line-height:1.1;
 }
 
 .hero h1 span{
-color:#8fd3ff;
+color:#8bd3ff;
 }
 
 .hero p{
-margin:20px 0;
-opacity:0.9;
+margin-top:20px;
+opacity:0.85;
+}
+
+.hero-buttons{
+margin-top:30px;
 }
 
 .btn{
-padding:12px 20px;
-border-radius:10px;
-border:none;
+padding:14px 22px;
+border-radius:12px;
+margin-right:10px;
 font-weight:600;
 cursor:pointer;
-margin-right:10px;
+border:none;
 }
 
 .btn-primary{
-background:#fff;
-color:#0052ff;
+background:white;
+color:var(--primary);
 }
 
 .btn-outline{
 background:transparent;
-border:1px solid #fff;
-color:#fff;
-}
-
-/* SECTION */
-.section{
-margin-top:50px;
-}
-
-.section-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
+border:1px solid rgba(255,255,255,0.5);
+color:white;
 }
 
 /* TRENDING */
+.section-title{
+font-size:26px;
+font-weight:700;
+margin-bottom:5px;
+}
+
+.section-sub{
+color:#666;
+margin-bottom:20px;
+}
+
 .trending{
 display:grid;
 grid-template-columns:2fr 1fr;
-gap:20px;
+gap:25px;
 }
 
 .big-card{
-height:320px;
-border-radius:16px;
-overflow:hidden;
 position:relative;
-background:url('https://images.unsplash.com/photo-1556761175-4b46a572b786') center/cover;
-color:#fff;
+border-radius:20px;
+overflow:hidden;
+color:white;
+}
+
+.big-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.big-overlay{
+position:absolute;
+bottom:0;
 padding:20px;
+background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);
+width:100%;
+}
+
+.small-cards{
 display:flex;
 flex-direction:column;
-justify-content:flex-end;
+gap:15px;
 }
 
-.overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);
+.small-card{
+background:white;
+padding:20px;
+border-radius:16px;
+transition:0.3s;
 }
 
-.big-content{
-position:relative;
-z-index:2;
-}
-
-.side-card{
-background:#f5f6fa;
-padding:15px;
-border-radius:12px;
-margin-bottom:12px;
+.small-card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
 /* EVENTS + CULTURE */
-.split{
+.grid-2{
 display:grid;
 grid-template-columns:1.5fr 1fr;
-gap:20px;
+gap:30px;
+margin-top:50px;
 }
 
 .event{
+background:white;
+padding:20px;
+border-radius:16px;
+margin-bottom:15px;
 display:flex;
-align-items:center;
-background:#f5f6fa;
-padding:15px;
-border-radius:12px;
-margin-bottom:10px;
 justify-content:space-between;
+align-items:center;
+transition:0.3s;
 }
 
-.event-left{
-display:flex;
-gap:15px;
+.event:hover{
+transform:scale(1.02);
 }
 
 .date{
-background:#0052ff;
-color:#fff;
-padding:10px;
-border-radius:10px;
-text-align:center;
+font-weight:700;
+color:var(--primary);
 }
 
-.plus{
-background:#eaeaff;
-width:30px;
-height:30px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-}
-
-/* CULTURE */
 .culture{
-background:#f5f6fa;
-padding:20px;
-border-radius:16px;
+background:white;
+padding:25px;
+border-radius:20px;
 }
 
-.culture img{
-width:100%;
-border-radius:10px;
-margin-bottom:10px;
-}
-
-.culture button{
-margin-top:10px;
-padding:10px;
-border:none;
-background:#0052ff;
-color:#fff;
-border-radius:8px;
-}
-
-/* TOOLS */
-.tools{
+/* CARDS */
+.quick{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:15px;
-margin-top:30px;
+gap:20px;
+margin-top:50px;
 }
 
-.tool{
-background:#f5f6fa;
-padding:20px;
-border-radius:12px;
+.q-card{
+background:white;
+padding:30px;
+border-radius:20px;
 text-align:center;
+transition:0.3s;
 }
 
-.tool h4{margin-top:10px;}
+.q-card:hover{
+transform:translateY(-6px);
+}
 
 /* FOOTER */
-footer{
-margin-top:40px;
-display:grid;
-grid-template-columns:1fr 1fr 1fr;
-gap:20px;
-font-size:14px;
-color:#555;
+.footer{
+margin-top:60px;
+padding:40px;
+background:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-footer h4{margin-bottom:10px;}
-
-.footer-bottom{
-text-align:center;
-margin-top:20px;
-font-size:13px;
-color:#777;
+/* CURSOR GLOW */
+.cursor{
+position:fixed;
+width:200px;
+height:200px;
+background:radial-gradient(circle,var(--secondary),transparent);
+pointer-events:none;
+opacity:0.2;
+border-radius:50%;
+transform:translate(-50%,-50%);
+z-index:1;
 }
 
-/* MOBILE */
+/* RESPONSIVE */
 @media(max-width:900px){
-.hero,.trending,.split{grid-template-columns:1fr;}
-.tools{grid-template-columns:1fr 1fr;}
-footer{grid-template-columns:1fr;}
+
+.hero{
+grid-template-columns:1fr;
+}
+
+.hero::after{
+display:none;
+}
+
+.trending{
+grid-template-columns:1fr;
+}
+
+.grid-2{
+grid-template-columns:1fr;
+}
+
+.quick{
+grid-template-columns:1fr 1fr;
+}
+
 }
 
 </style>
@@ -258,172 +298,159 @@ footer{grid-template-columns:1fr;}
 
 <body>
 
-<div class="wrapper">
+<div class="cursor" id="cursor"></div>
 
 <!-- NAV -->
-<nav>
+<div class="nav">
 <div><b>OOTB</b></div>
-<div class="links">
-<a href="#">News</a>
-<a href="#">Spotlight</a>
-<a href="#">Culture</a>
-<a href="#">Events</a>
+<div>
+<a class="active">News</a>
+<a>Spotlight</a>
+<a>Culture</a>
+<a>Events</a>
 </div>
-</nav>
+</div>
+
+<div class="container">
 
 <!-- HERO -->
 <div class="hero">
-<div class="hero-left">
-<div class="tag">INTERNAL PORTAL</div>
+<div class="hero-content">
+<div class="badge">INTERNAL PORTAL</div>
 <h1>Hello, Team!<br><span>Ready to create?</span></h1>
 <p>Welcome back to the OOTB canvas. Explore updates and connect with your peers.</p>
 
+<div class="hero-buttons">
 <button class="btn btn-primary">Submit Weekly Spark →</button>
 <button class="btn btn-outline">View Handbook</button>
 </div>
-<div></div>
+</div>
 </div>
 
 <!-- TRENDING -->
-<div class="section">
-
-<div class="section-header">
-<h2>Trending Now</h2>
-<a href="#">View All Stories →</a>
-</div>
+<h2 class="section-title">Trending Now</h2>
+<p class="section-sub">The pulse of Out of the Blue today.</p>
 
 <div class="trending">
 
 <div class="big-card">
-<div class="overlay"></div>
-
-<div class="big-content">
-<small>Internal Spotlight</small>
+<img src="https://images.unsplash.com/photo-1556761175-b413da4baf72">
+<div class="big-overlay">
+<p>Internal Spotlight</p>
 <h3>Innovation Lab: Q3 Breakthroughs in AI Integration</h3>
-<p>Discover how our teams are leveraging AI to scale brands.</p>
-<small>Marcus Thorne · 5 min read</small>
+<p style="font-size:13px;margin-top:10px;">Marcus Thorne • 5 min read</p>
+</div>
 </div>
 
+<div class="small-cards">
+
+<div class="small-card">
+<b>New Hybrid Work Policy Update</b>
+<p>Exploring flexibility while maintaining creativity.</p>
 </div>
 
-<div>
-<div class="side-card">
-<small>Announcements</small>
-<h4>New Hybrid Work Policy</h4>
-<p>Flexible working model update.</p>
+<div class="small-card">
+<b>OOTB Wins 'Best Agency' 2024</b>
+<p>Latest industry recognition.</p>
 </div>
 
-<div class="side-card">
-<small>Awards</small>
-<h4>OOTB Wins 'Best Agency'</h4>
-<p>Industry recognition.</p>
-</div>
-
-<div class="side-card">
-<small>Internal Story</small>
-<h4>The Mural Project</h4>
-<p>Workspace transformation.</p>
-</div>
+<div class="small-card">
+<b>Mural Project</b>
+<p>Creative workspace transformation.</p>
 </div>
 
 </div>
 
 </div>
 
-<!-- EVENTS + CULTURE -->
-<div class="section">
-<div class="split">
+<!-- EVENTS -->
+<div class="grid-2">
 
 <div>
-<h2>Upcoming Events</h2>
+<h2 class="section-title">Upcoming Events</h2>
 
 <div class="event">
-<div class="event-left">
-<div class="date">12<br>OCT</div>
 <div>
-<h4>Creative Coffee Hour</h4>
-<p>10:00 AM</p>
+<div class="date">12 OCT</div>
+Creative Coffee Hour
 </div>
-</div>
-<div class="plus">+</div>
+<div>+</div>
 </div>
 
 <div class="event">
-<div class="event-left">
-<div class="date">15<br>OCT</div>
 <div>
-<h4>Town Hall</h4>
-<p>03:30 PM</p>
+<div class="date">15 OCT</div>
+Town Hall
 </div>
-</div>
-<div class="plus">+</div>
+<div>+</div>
 </div>
 
 <div class="event">
-<div class="event-left">
-<div class="date">22<br>OCT</div>
 <div>
-<h4>Halloween Contest</h4>
-<p>All Day</p>
+<div class="date">22 OCT</div>
+Halloween Contest
 </div>
-</div>
-<div class="plus">+</div>
+<div>+</div>
 </div>
 
 </div>
-
-<div>
-<h2>Culture Preview</h2>
 
 <div class="culture">
-<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
-<h4>#OutInTheWild</h4>
+<h3>Culture Preview</h3>
+<p>#OutInTheWild</p>
 <p>Our culture goes beyond desks — it's about experiences.</p>
-<button>Explore Our Values</button>
+<button class="btn btn-primary" style="margin-top:20px;">Explore Our Values</button>
 </div>
 
 </div>
 
+<!-- QUICK -->
+<div class="quick">
+
+<div class="q-card">
+<b>Handbook</b>
+<p>Rules of the canvas.</p>
 </div>
 
-<!-- TOOLS -->
-<div class="tools">
-<div class="tool"><h4>Handbook</h4><p>Rules of the canvas.</p></div>
-<div class="tool"><h4>Benefits</h4><p>Health & wellness info.</p></div>
-<div class="tool"><h4>Payroll</h4><p>View earnings.</p></div>
-<div class="tool"><h4>Directory</h4><p>Connect with team.</p></div>
+<div class="q-card">
+<b>Benefits</b>
+<p>Health & Wellness info.</p>
+</div>
+
+<div class="q-card">
+<b>Payroll</b>
+<p>View your earnings.</p>
+</div>
+
+<div class="q-card">
+<b>Directory</b>
+<p>Connect with team.</p>
+</div>
+
 </div>
 
 </div>
 
 <!-- FOOTER -->
-<footer>
-
+<div class="footer">
 <div>
-<h4>OOTB</h4>
-<p>Building internet-first brands using AI, automation, and systems.</p>
-</div>
-
-<div>
-<h4>Quick Links</h4>
-<p>Home</p>
-<p>Culture</p>
-<p>Spotlight</p>
-<p>Events</p>
-</div>
-
-<div>
-<h4>Social</h4>
-<p>Facebook · Instagram · LinkedIn · X</p>
-</div>
-
-</footer>
-
-<div class="footer-bottom">
+<b>OOTB</b><br>
 © 2026 Out Of The Blue
 </div>
 
+<div>
+Contact • Privacy • Terms • Internal Handbook
 </div>
+
+</div>
+
+<script>
+const cursor = document.getElementById("cursor");
+document.addEventListener("mousemove", e=>{
+cursor.style.left = e.clientX+"px";
+cursor.style.top = e.clientY+"px";
+});
+</script>
 
 </body>
 </html>
