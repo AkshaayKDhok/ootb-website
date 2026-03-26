@@ -3,154 +3,222 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>OOTB V2</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
-/* ========= BASE ========= */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-body{background:#F4F6FB;color:#0F172A;}
-.container{max-width:1180px;margin:auto;padding:24px;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 
-/* ========= NAV ========= */
-.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:#fff;}
-.nav a{margin-left:24px;text-decoration:none;color:#6B7280;font-weight:500;}
-.nav .active{color:#0052FF;border-bottom:2px solid #0052FF;padding-bottom:4px;}
-
-/* ========= HERO ========= */
-.hero{
-display:grid;
-grid-template-columns:1.1fr 1fr;
-border-radius:28px;
-overflow:hidden;
-background:linear-gradient(135deg,#0047FF,#0066FF);
-color:white;
-margin-top:20px;
+body{
+background:#F5F7FB;
+color:#0F172A;
 }
 
-.hero-left{padding:60px;}
+/* CONTAINER */
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
 
-.badge{
-background:#00D1FF;
-color:black;
-padding:6px 14px;
-border-radius:20px;
-font-size:12px;
-font-weight:600;
-display:inline-block;
+/* NAVBAR */
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
 margin-bottom:20px;
 }
 
-.hero h1{
-font-size:48px;
-font-weight:800;
-line-height:1.1;
+.nav-left{
+display:flex;
+gap:30px;
+align-items:center;
 }
 
-.hero span{
-color:#7ED7FF;
+.logo{font-weight:800;font-size:18px;}
+
+.nav-links a{
+margin-right:18px;
+text-decoration:none;
+color:#6B7280;
+font-weight:500;
+}
+
+.nav-links a.active{
+color:#0052FF;
+font-weight:600;
+}
+
+/* HERO */
+.hero{
+display:grid;
+grid-template-columns:1fr 1fr;
+border-radius:24px;
+overflow:hidden;
+margin-bottom:40px;
+}
+
+.hero-left{
+background:linear-gradient(135deg,#0B3EDB,#0052FF);
+color:white;
+padding:50px;
+}
+
+.tag{
+background:#00D1FF;
+color:#001F3F;
+padding:6px 14px;
+border-radius:20px;
+font-size:12px;
+display:inline-block;
+margin-bottom:16px;
+}
+
+.hero h1{
+font-size:44px;
+line-height:1.2;
+margin-bottom:15px;
+}
+
+.hero h1 span{
+color:#7ED3FF;
 }
 
 .hero p{
-margin-top:18px;
-color:#DBEAFE;
-max-width:420px;
+opacity:0.85;
+margin-bottom:25px;
 }
 
-.buttons{margin-top:30px;display:flex;gap:14px;}
+.btns{
+display:flex;
+gap:15px;
+}
 
-.btn{
-padding:14px 20px;
+.btn-primary{
+background:white;
+color:#0052FF;
+padding:12px 20px;
 border-radius:12px;
 font-weight:600;
+border:none;
 cursor:pointer;
-display:inline-flex;
-align-items:center;
-gap:8px;
 }
 
-.primary{background:white;color:#0052FF;}
-.secondary{border:1px solid rgba(255,255,255,0.5);}
+.btn-secondary{
+border:1px solid rgba(255,255,255,0.5);
+color:white;
+padding:12px 20px;
+border-radius:12px;
+cursor:pointer;
+background:transparent;
+}
 
+/* HERO RIGHT */
 .hero-right{
-background:url('https://images.unsplash.com/photo-1633419461186-7d40a38105ec') center/cover;
+background:
+radial-gradient(circle at 70% 30%, rgba(255,255,255,0.15), transparent 40%),
+radial-gradient(circle at 40% 70%, rgba(255,255,255,0.1), transparent 50%),
+linear-gradient(135deg,#0B3EDB,#1D6BFF);
 }
 
-/* ========= SECTION ========= */
-.section{margin-top:60px;}
-.section h2{font-size:26px;}
-.sub{color:#6B7280;margin-top:6px;}
-.header-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
-.link{color:#0052FF;font-weight:600;cursor:pointer;}
+/* SECTION TITLE */
+.section-title{
+font-size:26px;
+font-weight:700;
+margin-bottom:5px;
+}
 
-/* ========= TRENDING ========= */
-.trending{display:grid;grid-template-columns:2fr 1fr;gap:24px;}
+.section-sub{
+color:#6B7280;
+font-size:14px;
+margin-bottom:20px;
+}
+
+/* TRENDING */
+.trending{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+margin-bottom:40px;
+}
 
 .main-card{
+position:relative;
 border-radius:20px;
 overflow:hidden;
-position:relative;
 }
 
-.main-card img{width:100%;height:100%;object-fit:cover;}
+.main-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
 
 .overlay{
 position:absolute;
 bottom:0;
-padding:24px;
+padding:25px;
 color:white;
-background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);
+background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);
 }
 
-.tag{
-background:white;
-color:black;
-font-size:12px;
-padding:4px 10px;
-border-radius:12px;
-display:inline-block;
-margin-bottom:10px;
+.overlay h3{font-size:22px;margin:10px 0}
+
+.author{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:10px;
 }
 
-.overlay h3{font-size:22px;margin-bottom:8px;}
+.author img{
+width:30px;height:30px;border-radius:50%;
+}
 
-.overlay p{font-size:14px;color:#ddd;margin-bottom:10px;}
-
-.author{display:flex;align-items:center;gap:8px;font-size:13px;}
-
-.author img{width:28px;height:28px;border-radius:50%;}
-
-/* side */
+/* SIDE */
 .side-card{
-background:#fff;
-padding:18px;
+background:#F3F5FB;
+padding:16px;
 border-radius:16px;
-margin-bottom:16px;
+margin-bottom:12px;
 }
 
 .side-tag{
-font-size:11px;
+font-size:10px;
 font-weight:700;
-color:#0052FF;
 margin-bottom:6px;
+display:inline-block;
 }
 
-/* ========= EVENTS ========= */
-.grid{display:grid;grid-template-columns:1.5fr 1fr;gap:30px;}
+.side-card:nth-child(1) .side-tag{color:#007AFF;}
+.side-card:nth-child(2) .side-tag{color:#6D28D9;}
+.side-card:nth-child(3) .side-tag{color:#C2410C;}
+
+/* EVENTS */
+.events{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+margin-bottom:40px;
+}
 
 .event{
-background:#fff;
-padding:16px;
+background:#F3F5FB;
+padding:18px;
 border-radius:16px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:14px;
+margin-bottom:12px;
+border-left:4px solid;
 }
 
-.event-left{display:flex;gap:14px;}
+.event:nth-child(1){border-color:#00D1FF;}
+.event:nth-child(2){border-color:#0052FF;}
+.event:nth-child(3){border-color:#FF5C00;}
 
 .date{
 font-weight:700;
@@ -160,71 +228,65 @@ color:#0052FF;
 .plus{
 width:32px;height:32px;
 border-radius:50%;
-border:1px solid #ddd;
+border:1px solid #ccc;
 display:flex;
 align-items:center;
 justify-content:center;
 }
 
-/* ========= CULTURE ========= */
+/* CULTURE */
 .culture{
-background:#fff;
+background:linear-gradient(#F8FAFC,#EEF2FF);
 padding:20px;
-border-radius:18px;
+border-radius:20px;
 }
 
-.culture img{
+.row{
+display:flex;
+gap:10px;
+margin-bottom:10px;
+}
+
+.row img{
 width:48%;
 border-radius:12px;
 }
 
-.row{display:flex;gap:10px;margin-bottom:12px;}
-
 .avatars{
 display:flex;
-gap:6px;
-margin:10px 0;
+margin-top:10px;
 }
 
 .avatars img{
-width:28px;height:28px;border-radius:50%;
+width:30px;height:30px;
+border-radius:50%;
+border:2px solid white;
+margin-left:-8px;
 }
 
-/* ========= QUICK ========= */
+/* QUICK */
 .quick{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:18px;
-margin-top:40px;
+gap:15px;
+margin-bottom:40px;
 }
 
 .q{
 background:#EEF2FF;
-padding:22px;
+padding:20px;
 border-radius:16px;
 text-align:left;
 }
 
-.q h4{margin-top:10px;}
-.q p{color:#6B7280;font-size:13px;margin-top:4px;}
+.q h4{margin-top:10px}
 
-/* ========= FOOTER ========= */
+/* FOOTER */
 .footer{
-margin-top:60px;
-padding:30px 0;
 display:flex;
 justify-content:space-between;
-flex-wrap:wrap;
 font-size:14px;
 color:#6B7280;
-}
-
-/* ========= RESPONSIVE ========= */
-@media(max-width:900px){
-.hero{grid-template-columns:1fr;}
-.trending{grid-template-columns:1fr;}
-.grid{grid-template-columns:1fr;}
-.quick{grid-template-columns:1fr 1fr;}
 }
 
 </style>
@@ -232,58 +294,49 @@ color:#6B7280;
 
 <body>
 
+<div class="container">
+
+<!-- NAV -->
 <div class="nav">
-<b>OOTB</b>
-<div>
+<div class="nav-left">
+<div class="logo">OOTB</div>
+<div class="nav-links">
 <a class="active">News</a>
 <a>Spotlight</a>
 <a>Culture</a>
 <a>Events</a>
 </div>
 </div>
-
-<div class="container">
+</div>
 
 <!-- HERO -->
 <div class="hero">
 <div class="hero-left">
-<div class="badge">INTERNAL PORTAL</div>
-
+<div class="tag">INTERNAL PORTAL</div>
 <h1>Hello, Team!<br><span>Ready to create?</span></h1>
-
-<p>Welcome back to the OOTB canvas. Explore the latest updates, connect with your peers, and dive into our vibrant company culture.</p>
-
-<div class="buttons">
-<div class="btn primary">Submit Weekly Spark →</div>
-<div class="btn secondary">View Handbook</div>
+<p>Welcome back to the OOTB canvas. Explore updates and connect with your peers.</p>
+<div class="btns">
+<button class="btn-primary">Submit Weekly Spark →</button>
+<button class="btn-secondary">View Handbook</button>
 </div>
-
 </div>
 <div class="hero-right"></div>
 </div>
 
 <!-- TRENDING -->
-<div class="section">
-
-<div class="header-row">
-<div>
-<h2>Trending Now</h2>
-<p class="sub">The pulse of Out of the Blue today.</p>
-</div>
-<div class="link">View All Stories →</div>
-</div>
+<h2 class="section-title">Trending Now</h2>
+<p class="section-sub">The pulse of Out of the Blue today.</p>
 
 <div class="trending">
-
 <div class="main-card">
 <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72">
 <div class="overlay">
-<div class="tag">Internal Spotlight</div>
+<span class="tag">Internal Spotlight</span>
 <h3>Innovation Lab: Q3 Breakthroughs in AI Integration</h3>
-<p>Discover how our creative team is leveraging neural networks to streamline the branding pipeline for global clients.</p>
+<p>Discover how our creative teams are leveraging neural networks...</p>
 <div class="author">
-<img src="https://randomuser.me/api/portraits/men/32.jpg">
-Marcus Thorne • 5 min read
+<img src="https://i.pravatar.cc/100">
+<span>Marcus Thorne • 5 min read</span>
 </div>
 </div>
 </div>
@@ -291,61 +344,50 @@ Marcus Thorne • 5 min read
 <div>
 <div class="side-card">
 <div class="side-tag">ANNOUNCEMENTS</div>
-<b>New Hybrid Work Policy Update</b>
-<p>Exploring flexibility while maintaining synergy in the studio...</p>
+<h4>New Hybrid Work Policy Update</h4>
+<p>Exploring flexibility while maintaining creativity.</p>
 </div>
 
 <div class="side-card">
 <div class="side-tag">AWARDS</div>
-<b>OOTB Wins 'Best Agency' 2024</b>
-<p>A huge congratulations to everyone involved...</p>
+<h4>OOTB Wins 'Best Agency' 2024</h4>
+<p>Latest industry recognition.</p>
 </div>
 
 <div class="side-card">
 <div class="side-tag">INTERNAL STORY</div>
-<b>The Mural Project: Art in the Hallway</b>
-<p>How we’re transforming our space...</p>
+<h4>Mural Project</h4>
+<p>Creative workspace transformation.</p>
 </div>
-</div>
-
 </div>
 </div>
 
 <!-- EVENTS -->
-<div class="section grid">
+<div class="events">
 
 <div>
-<h2>Upcoming Events</h2>
+<h2 class="section-title">Upcoming Events</h2>
 
 <div class="event">
-<div class="event-left">
+<div>
 <div class="date">12 OCT</div>
-<div>
-<b>Creative Coffee Hour: Visual Trends</b>
-<p>10:00 AM · Main Lounge & Zoom</p>
-</div>
+<h4>Creative Coffee Hour</h4>
 </div>
 <div class="plus">+</div>
 </div>
 
 <div class="event">
-<div class="event-left">
+<div>
 <div class="date">15 OCT</div>
-<div>
-<b>Town Hall: End of Quarter Recap</b>
-<p>03:30 PM · The Cinema Room</p>
-</div>
+<h4>Town Hall</h4>
 </div>
 <div class="plus">+</div>
 </div>
 
 <div class="event">
-<div class="event-left">
-<div class="date">22 OCT</div>
 <div>
-<b>Halloween Decorating Contest</b>
-<p>All Day · Entire Studio</p>
-</div>
+<div class="date">22 OCT</div>
+<h4>Halloween Contest</h4>
 </div>
 <div class="plus">+</div>
 </div>
@@ -353,21 +395,19 @@ Marcus Thorne • 5 min read
 </div>
 
 <div class="culture">
+<h3>Culture Preview</h3>
 <div class="row">
 <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978">
 </div>
-
-<b>#OutInTheWild</b>
-<p>Our culture isn’t just about what happens at the desk. It’s the "Out of the Blue" moments that define us.</p>
+<h4>#OutInTheWild</h4>
+<p>Our culture goes beyond desks — it's about experiences.</p>
 
 <div class="avatars">
-<img src="https://randomuser.me/api/portraits/women/1.jpg">
-<img src="https://randomuser.me/api/portraits/men/2.jpg">
-<img src="https://randomuser.me/api/portraits/women/3.jpg">
+<img src="https://i.pravatar.cc/1">
+<img src="https://i.pravatar.cc/2">
+<img src="https://i.pravatar.cc/3">
 </div>
-
-<div class="btn primary">Explore Our Values</div>
 
 </div>
 
@@ -375,32 +415,16 @@ Marcus Thorne • 5 min read
 
 <!-- QUICK -->
 <div class="quick">
-<div class="q">
-<h4>Handbook</h4>
-<p>Rules of the canvas.</p>
-</div>
-
-<div class="q">
-<h4>Benefits</h4>
-<p>Health & Wellness info.</p>
-</div>
-
-<div class="q">
-<h4>Payroll</h4>
-<p>View your earnings.</p>
-</div>
-
-<div class="q">
-<h4>Directory</h4>
-<p>Connect with team.</p>
-</div>
+<div class="q"><h4>Handbook</h4><p>Rules of the canvas.</p></div>
+<div class="q"><h4>Benefits</h4><p>Health & Wellness info.</p></div>
+<div class="q"><h4>Payroll</h4><p>View your earnings.</p></div>
+<div class="q"><h4>Directory</h4><p>Connect with team.</p></div>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-<div><b>OOTB</b><br>© 2026 Out Of The Blue</div>
-<div>Contact · Privacy · Terms · Internal Handbook</div>
-<div>🌐 🔗</div>
+<div>OOTB © 2026</div>
+<div>Contact • Privacy • Terms • Internal Handbook</div>
 </div>
 
 </div>
